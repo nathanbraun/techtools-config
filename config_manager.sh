@@ -7,7 +7,9 @@ BACKUP_ROOT="$HOME/config_backup"
 # List of config files and directories to backup or restore
 CONFIG_FILES_LIST=(
   ".config"
+  ".gitconfig"
   ".inputrc"
+  ".ipython"
   ".p10k.zsh"
   ".tmux"
   ".tmux.conf"
