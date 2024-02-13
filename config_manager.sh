@@ -45,25 +45,33 @@ backup() {
 
 # Function to restore config files and directories from the backup directory
 restore() {
-  if [ -d "$BACKUP_ROOT" ]; then
-    # Get the latest backup directory
-    BACKUP_DIR=$(ls -td -- "$BACKUP_ROOT"/*/ | head -n 1)
-
-    if [ -z "$BACKUP_DIR" ]; then
-      echo "No backup found in $BACKUP_ROOT. Cannot restore."
-      exit 1
-    fi
-
-    for item in "${CONFIG_FILES_LIST[@]}"; do
-      if [ -e "$BACKUP_DIR/$item" ]; then
-        mv -v "$BACKUP_DIR/$item" "$HOME_DIR"
-      fi
-    done
-
-    echo "Config files and directories restored from $BACKUP_DIR"
-  else
+  if [ ! -d "$BACKUP_ROOT" ]; then
     echo "Backup root directory $BACKUP_ROOT not found. Cannot restore."
+    exit 1
   fi
+
+  # Get the latest backup directory
+  BACKUP_DIR=$(ls -td -- "$BACKUP_ROOT"/*/ | head -n 1)
+
+  if [ -z "$BACKUP_DIR" ]; then
+    echo "No backup found in $BACKUP_ROOT. Cannot restore."
+    exit 1
+  fi
+
+  # Remove everything managed by chezmoi
+  chezmoi managed --null | xargs -0 -I {} chezmoi remove {}
+
+  # Purge chezmoi's source state
+  chezmoi purge --force
+
+  # Restore files from backup
+  for item in "${CONFIG_FILES_LIST[@]}"; do
+    if [ -e "$BACKUP_DIR/$item" ]; then
+      mv -v "$BACKUP_DIR/$item" "$HOME_DIR"
+    fi
+  done
+
+  echo "Config files and directories restored from $BACKUP_DIR"
 }
 
 # Check command line arguments
