@@ -46,67 +46,6 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "nvim-telescope/telescope.nvim"
 
-
-{{- if eq .chezmoi.os "darwin" }}
-  use "alker0/chezmoi.vim"
-
-  -- Treesitter
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  }
-  use "JoosepAlviste/nvim-ts-context-commentstring"
-
-  -- vimwiki
-  use {"vimwiki/vimwiki", branch = "dev"}
-  use "michal-h21/vim-zettel"
-
-  -- zk
-  use "mickael-menu/zk-nvim"
-
-  use { "nathanbraun/vim-rainbow-lists", ft = "vimwiki" }
-
-  -- cmp plugins
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-nvim-lua"
-
-  -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
-
-  -- programming
-  -- use "github/copilot.vim"
-  use "jpalardy/vim-slime"
-
-  use "wakatime/vim-wakatime"
-
-  -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-
-  -- copilot
-  use {
-    "zbirenbaum/copilot-cmp",
-    module = "copilot_cmp",
-  }
-  use {
-    "zbirenbaum/copilot.lua",
-    event = {"VimEnter"},
-    config = function()
-      vim.defer_fn(function()
-        require("copilot").setup({
-          ft_disable = { "markdown", "vimwiki"}
-        })
-      end, 100)
-    end,
-  }
-{{- end }}
-
   use "junegunn/fzf"
   use "junegunn/fzf.vim"
 
