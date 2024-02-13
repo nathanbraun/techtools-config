@@ -1,0 +1,8 @@
+require "user.options"
+require "user.keymaps"
+require "user.plugins"
+require "user.colorscheme"
+{{- if eq .chezmoi.os "darwin" }}
+-- put mac plugins here
+{{- end }}
+require "user.telescope"

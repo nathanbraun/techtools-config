@@ -1,0 +1,1191 @@
+# Welcome to the Vim Tutorial
+
+Vim is a text editor -- a program used to read, write and edit text.
+
+Vim is fast and powerful. But it's different from other editors, and so takes
+some getting used to. Hence this tutorial. But don't worry, learning Vim is (1)
+fun, and (2) doesn't take that long. This guide takes about 30 minutes.
+
+This tutorial takes place *in* Vim. Text editors are for working with text. In
+this case the text you're working with is a tutorial about Vim. It's
+interactive, and you'll be editing it. Don't worry about messing anything up,
+changes won't be saved.
+
+For now, press the `j`{normal} key to move the cursor down until you can see
+Lesson 1.
+
+## Lesson 1: MODES
+
+Vim is a modal editor. That means it has "modes".
+
+1. In **insert** mode, you type text and it shows up on the screen. This is how
+   Microsoft Word, Google docs, and pretty much every other text box everywhere
+   works.
+2. In **normal** mode, you can navigate, scroll, copy, paste, indent —
+   basically anything you'd want besides type text and have it appear on the
+   screen. Turns out this is a lot! More than you'd think at first.
+
+Important: **these two modes use the same keys.** For example, in Insert mode,
+typing `j` puts a `j` on the screen. In Normal mode, typing `j`{normal}
+moves your cursor down a line.
+
+The way we have Vim set up, **you can always press `j` and `k` simultaneously
+(`jk`) to get in Normal mode.**
+
+If you're already in Normal mode, pressing `jk` won't do anything, so there's
+no harm in pressing it if you're unsure.
+
+To complete this lesson:
+
+1. Make sure you're in Normal mode.
+2. Press the `j`{normal} key to move the cursor down until you can see the
+   start of Lesson 2.
+
+## Lesson 2: NORMAL MODE - MOVING THE CURSOR
+
+Most of your time in Vim will be in Normal mode. It's more common to be
+reading, revising or (in case of code) running text than it is to be writing it
+for the very first time.
+
+A big part of being in Normal mode is moving cursor around the screen - that's
+this lesson. When you're ready to get started, press `j`{normal} until you can
+see Lesson 2.1.
+
+### Lesson 2.1: h, j, k, l AS ARROW KEYS
+
+To move the cursor, press the `h`, `j`, `k`, `l` keys as indicated.
+
+        ↑
+        k         Hint: The h key is at the left and moves left.
+   ← h    l →           The l key is at the right and moves right.
+       j                The j key looks like a down arrow.
+       ↓
+
+1. Move the cursor around the screen until you are comfortable.
+
+2. Hold down the keys - notice how the cursor continues moving.
+
+3. Using the `j`{normal} key, move down to Lesson 2.2.
+
+### Lesson 2.2: MOVING THE CURSOR HORIZONTALLY
+
+It's very important to internalize the `h`, `j`, `k`, `l` keys as left, down,
+up, right and up. This will make you faster, both in Vim as well as (the many)
+places with Vim-style keybindings (the shell, tmux, Gmail).
+
+But moving one line or character at a time can be slow. Here are some other
+ways to move the cursor in Normal mode:
+
+`w`{normal} :: moves the cursor to the beginning of the next *word*
+`b`{normal} :: moves the cursor *back* to the beginning of a word 
+
+1. Press `w`{normal} and `b`{normal} to move from word to word.
+2. Try holding them down.
+
+Some other same-line movements:
+
+`0`{normal} :: moves the cursor to the start of the current line
+`$`{normal} :: moves the cursor to the end of the current line
+
+3. Try out `0`{normal} and `$`{normal}.
+
+For navigating horizontally across the screen, `b`{normal} and `w`{normal} are
+usually faster than `h`{normal} and `l`{normal}, though you can use `h`{normal}
+and `l`{normal} for more fine-grained control.
+
+### Lesson 2.3: MOVING THE CURSOR VERTICALLY
+
+For moving vertically, pressing <Control> and u together moves the cursor up
+half a page.
+
+Note, there are a few keys like this, so from now on instead of saying "press
+<Control> and u together" we'll write it `<C-u>`{normal}. So:
+
+`<C-u>`{normal} :: moves the cursor **up** half a page.
+`<C-d>`{normal} :: moves the cursor **down** half a page.
+
+1. Try out `<C-u>`{normal} and `<C-d>`{normal} a few times.
+
+Hint: sometimes after jumping around, you might not be sure where the cursor
+*is*. If that happens just flick between `j` and `k` a few times until you can
+see the cursor moving.
+
+### Lesson 2.4: RE-CENTERING 
+
+This tutorial file — like many you'll be working with in Vim — has more lines
+than can fit on the screen.
+
+The part of the file we can see is called the "view". Vim generally holds the
+view still, but will automatically move it (scroll) if the cursor gets close to
+the bottom or top.
+
+To recenter the view and put the line with the cursor in the middle of the
+screen you can press `zz`{normal}.
+
+1. Move the cursor down to Lesson 2 SUMMARY below
+2. Press `zz`{normal} to recenter the view.
+
+You can recenter the view whenever aesthetically convenient. If you're scanning
+a long text file and want to do it after every few line movements that's fine.
+
+### Lesson 2 SUMMARY
+
+Navigation fundamentals:
+
+ 1. The cursor is moved using either the arrow keys or the hjkl keys.
+    h (left)   j (down)       k (up)       l (right)
+
+Horizontal movements:
+
+ 2. `w`{normal} (word forward) and `b`{normal} (word back) 
+ 3. `0`{normal} and `$`{normal} move to the start and end of the line
+
+Vertical movements:
+
+ 4. `<C-u>`{normal} and `<C-d>`{normal} scroll faster than just up/down a line
+
+Also:
+
+ 5. `zz`{normal} recenters the view
+
+There are many more useful ways to move the cursor in Vim, some of which we'll
+learn later. For now the ones in this section will go a long way.
+
+## Lesson 3: ONE OFF NORMAL COMMANDS, COUNTING, AND UNDO
+### Lesson 3.1: DELETE ONE CHARACTER IN NORMAL MODE
+
+In Normal mode, pressing `x`{normal} will delete the key under the cursor.
+
+ 1. Move the cursor to the line below marked ✗.
+
+ 2. To fix the errors, move the cursor until it is on top of the
+    character to be deleted.
+
+ 3. Press the x key to delete the unwanted character.
+
+ 4. Repeat steps 2 through 4 until the sentence is correct.
+
+The ccow jumpedd ovverr thhe mooon.
+
+### Lesson 3.2: REPLACE ONE CHARACTER IN NORMAL MODE
+
+In Normal mode, pressing `r`{normal}, then a single key, will replace the
+cursor with that key. For example, press `rx`{normal} to replace the character
+at the cursor with x.
+
+Note: later we'll learn other ways to replace text. Replacing a single
+character with `r`{normal} doesn't come up *that* often, but it's good to know
++ also good navigation practice.
+
+ 1. Move the cursor to the first line below marked ✗.
+
+ 2. Move the cursor so that it is on top of the first error.
+
+ 3. Type `r`{normal} and then the character which should be there.
+
+ 4. Repeat steps 2 and 3 until the first line is equal to the second one.
+
+Whan this lime was tuoed in, someone presswd some wrojg keys!
+When this line was typed in, someone pressed some wrong keys!
+
+### Lesson 3.3: COUNTS
+
+You can type a number before most Vim commands. If you do, Vim will do the
+command that many times.
+
+1. One the line below, delete 456 by moving the cursor to 4 and typing
+   `3x`{normal}.
+
+123456789
+
+2. In the line below, "moon" has 24 o's (22 extra). Use a count and `x`{normal}
+   to fix it.
+
+The cow jumped over the moooooooooooooooooooooooon.
+
+Counts work on most commands, including the the navigation ones we learned in
+Lesson 2.
+
+3. Type `10j`{normal} to move the cursor down (`j`) 10 times.
+
+
+
+
+
+
+
+
+
+4. Type `20w`{normal} to move 20 words.
+
+### Lesson 3.4: THE PROBLEM WITH COUNTS
+
+The problem with counts is that using them effectively requires, well,
+counting. To fix the sentence above we needed to know there were 22 extra o's.
+We're learning Vim because it's *fast*, not because we want to spend a bunch of
+time counting things.
+
+Counts are powerful feature of Vim and it's worth knowing about them, but there
+are often faster ways to do what we want.
+
+## Lesson 3.5 UNDOING AND REDOING
+
+You can undo something by pressing `u`{normal}. To redo it (undo your undo)
+press `<C-r>`{normal}.
+
+1. Fix the following sentence:
+
+Learnning Vim iss ffun!!
+Learning Vim is fun!
+
+2. Undo your fixes with `u`{normal}.
+3. Redo them with `<C-r>`{normal}.
+
+It probably goes without saying, but undoing and redoing are very common things
+to do when editing text.
+
+Don't hesitate to use them in this tutorial if you ever mess anything up or
+don't get an edit right on your first try.
+
+### Lesson 3 SUMMARY
+
+In Normal mode, pressing `x`{normal} deletes the character under the cursor.
+Pressing `r`{normal}, then another key replaces the cursor with that key.
+
+You can type a number before most Vim commands to do them multiple times. For
+example, `3x`{normal} will delete three characters starting at the cursor.
+`5k`{normal} will move the cursor up 5 lines.
+
+Counts are powerful, but there are often faster alternatives.
+
+To undo a change, press `u`{normal}. To redo, press `<C-r>`{normal}.
+
+## Lesson 4: VIM'S GRAMMER
+
+Human languages like English aren't random or something we just memorize. They
+have subjects, verbs and adjectives that we fit together in mostly predictable
+ways.
+
+It's the same with Vim. There are actions, or things we can do with text. For
+example:
+- delete
+- copy
+- make uppercase
+- select
+- indent
+- format
+
+And there are subjects, or parts of the text itself. Examples:
+- to the end of the line
+- the word my cursor is in
+- the paragraph my cursor is in
+- the set of parenthesis the cursor is in
+- the text I've selected
+- to the next 'g' character
+
+Vim calls text actions *operators* and text subjects *motions*.
+
+Though calling them *actions* and *subjects* make the grammer nature of Vim
+clearer, we'll stick to Vim's terminology for the rest of the tutorial. Just
+remember:
+
+In the grammer of Vim:
+- *actions* = *operators* = *things you can do to text* (delete, copy, etc)
+- *subjects* = *motions* = *parts of the text itself* (word, to the end of the
+  line, this paragraph)
+
+Combining these operators + motions are another big part of working in Normal
+mode in Vim.
+
+### Lesson 4.2: WE ALREADY KNOW SOME MOTIONS
+
+Though Vim motions are "parts of the text", the reason Vim calls them motions
+is because pressing a motion key on its own usually moves the cursor.
+
+We already know some motions, for example:
+- `w`{normal} is to the next word
+- `b`{normal} is to the beginning of the word
+- `$`{normal} is to the end of the line
+- `0`{normal} is to the beginning of the line
+
+### Lesson 4.2: OUR FIRST OPERATOR: DELETE
+
+Let's combine some motions and operators to start using Vim's grammer.
+
+*Deleting* is one operation we can do on text. To delete text in Vim, type the
+operator `d`{normal} (for delete), and then the motion.
+
+So you can delete to the start of the next word with `dw`{normal}. Or to the
+end of the line with `d$`{normal}.
+
+1. Use `dw`{normal} to fix the following sentence:
+
+There are a some words fun that don't belong paper in this sentence.
+
+2. Use `d$`{normal} to fix the following sentence:
+
+Somebody typed the end of this line twice. end of this line twice.
+
+3. Use `d0`{normal} to fix the following sentence:
+
+Somebody messed up Somebody messed up the start of this sentence.
+
+### Lesson 4.3: ANOTHER OPERATOR: COPYING
+
+Another text operation is *copying*. For historical reasons, copying text in
+Vim is called *yanking*.
+
+You yank text with the `y` operator, then you *paste* it with `p`.
+ 
+1. Type `yw`{normal} to yank the following word:
+
+birthday
+
+2. Paste it in the right spot:
+
+Happy !
+
+3. By default, deleting text also yanks it. Use the delete and paste operators
+   to fix the following sentence. Note: if you accidentally paste it in the
+   wrong spot, use undo to fix it.
+
+walked When she in we yelled surprise!
+
+### Lesson 4.4: LINES
+
+With what we know so far, you could delete an entire line with `0d$`{normal}.
+That moves cursor to the beginning of the line, then deletes to the end of it.
+
+But whole line actions are common enough that Vim includes a shortcut:
+
+`dd`{normal} deletes the whole line
+
+`yy`{normal} copies the whole line.
+
+1. Use `dd`{normal} and `p`{normal} to fix the lines below:
+
+This is line 1.
+This is line 2.
+This is line 3.
+This is line 5.
+This is line 4.
+
+### Lesson 4 SUMMARY
+
+Vim has a grammer, with things you can *do to text* and *parts of the text
+itself*. In Vim, these are called *operators* and *motions* respectively.
+
+They're called *motions* because pressing them by themselves moves the cursor,
+examples: `w`{normal}, `b`{normal}, `0`{normal}, `$`{normal}
+
+But you can also pair them with operators to do things like delete to the start
+of the next word (`dw`{normal}) or copy to the end of the line (`y$`{normal}).
+
+Generally the "whole line" version of an operator is to press the key twice.
+
+So far we've just combined a few motions and operators to get a feel for how
+Vim works. Later we'll learn more of both and see how this is a big part of
+what makes Vim so powerful.
+
+## Lesson 5: INSERT MODE
+
+So far we've been using Vim in Normal mode. In Normal mode, when you press
+`w`{normal}, the cursor jumps forward a word, pressing `b`{normal} moves it
+back, etc.
+
+In Insert mode, when you type `w` or `b`, a `w` or `b` appears on the screen.
+Insert mode is like Microsoft Word or Google Docs.
+
+Vim newcomers sometimes spend too much time in Insert mode. There's a reason
+moving around, deleting, copying etc is the one called *Normal* mode. It's the
+mode you'll normally be in. If you need to enter some text or fix a typo,
+quickly get in Insert mode, type it, then get back to Normal mode.
+
+### Lesson 5.1: INSERT MODE
+
+It's important to know how to go from Normal to Insert mode and vis versa.
+
+In Normal mode, pressing `i`{normal} (for *insert*) will put you in Insert mode
+at the cursor.
+
+In Insert mode, pressing `jk`{normal} together will put you back in Normal mode.
+
+1. Move the cursor to the first line below marked ✗.
+
+2. Make the first line the same as the second by moving the cursor, entering
+   insert mode, and making the fix. Note how `i`{normal} puts you in insert
+   mode right *before* the cursor.
+
+3. As each error is fixed press `jk` to return to Normal mode.
+
+4. Repeat steps 2 and 3 to correct the sentence.
+
+There is text misng this .
+There is some text missing from this line.
+
+## Lesson 5.2: I AND A
+
+As you can tell by looking at it, in Normal mode the cursor is a block, one
+character wide.
+
+`i`{normal} puts you in Insert mode to the *left* of that cursor block.
+
+`a`{normal} (for append) puts you in Insert mode to the *right* of the block.
+
+1. Using `$`{normal} and `a`{normal}, fix the sentence below:
+
+Vim is fast and
+Vim is fast and powerful!
+
+Just like `i`{normal} and `a`{normal} enter Insert mode to the left and right
+of the cursor, `I`{normal} and `A`{normal} enter Insert mode to the left and
+right of the current line.
+
+2. Use `A` and `I` to fix the lines below so that they all say the same thing.
+   Make sure you go back to Normal mode after each fix.
+
+Vim is a free and open-source, screen-based text editor program.
+
+free and open-source, screen-based text editor program.
+Vim is a free and open-source, screen-based
+free and open-source, screen-based
+
+## Lesson 5.3: MORE WAYS TO GET INTO INSERT MODE - o
+
+So far we've learned `i`{normal}, `a`{normal}, along with their start
+(`I`{normal}) and end (`A`{normal}) of line versions
+
+The `o`{normal} key will make a new line on the line *below* your cursor, and
+put you in insert mode in it.
+
+1. Move the cursor to Eat Breakfast and type `o`{normal} to add "- Learn Vim"
+   (include the hyphen) to the todo list below:
+2. Delete Do nothing with `dd`{normal}.
+
+LIST FOR TODAY
+- Wake Up
+- Eat Breakfast
+- Do nothing
+
+## Lesson 5.4: MORE WAYS TO GET INTO INSERT MODE - c
+
+The `c`{normal} key (for change) works the same way as the `d`{normal} (delete)
+key, except it'll put you in Insert mode after deleting the text.
+
+1. Use `c$`{normal} to change the sentence below to say Learning Vim is fun!
+
+Learning Vim is what again?
+
+2. Use `cw`{normal} to fix sentence below. Make sure you go back to Normal mode
+   after each word.
+
+The quick brown fox jumped over the lazy dog.
+The slow red turtle jumped over the lazy cat.
+
+## Lesson 5: SUMMARY
+
+In Insert mode, the text you type shows up on the screen.
+
+You should only be in Insert mode when you're actually inserting text. You'll
+be most efficient if you make your change, then get back to Normal mode.
+
+When you're in Insert mode, pressing `j` and `k` simultaneously gets you back
+to Normal mode.
+
+Other ways to enter Insert mode include `o`{normal}, which puts you in Insert
+mode on a new line and `c`{normal}, which works just like delete, except it
+puts you into Insert mode after.
+
+## Lesson 6: SPECIAL KEYS
+### Lesson 6.1: THE DOT OPERATOR
+
+In Normal mode, pressing `.`{normal} (a period, or dot) will repeat whatever
+command you just did.
+
+1. Use the `I`{normal} to fix the second line below. (Remember the `I`{normal}
+   inserts at the beginning of the line no matter where the cursor is.)
+
+There is some text missing from this line.
+some text missing from this line.
+
+2. Now use the `.` command to fix each of the following lines (note, move the
+   cursor to the line you want to fix and press `.`{normal}).
+
+also some text missing here.
+text missing here too.
+even text missing here!
+
+3. Now use `cw`{normal} (once) and the `.` key (the other three times) to fix
+   the sentence below so that would is wood:
+
+How much would could a would chuck chuck if a would chuck could chuck would.
+
+## Lesson 6.2: LEADER KEY
+
+Sometimes we want to do one-off actions in Vim. This could be built-in Vim
+functionality that we do often or something from a third-party plugin.
+
+In Vim, these are often done via a shortcut of the form:
+
+`<leader><key>`{normal} in Normal mode.
+
+Where `<leader>`{normal} is some key (e.g. comma, backslash, space bar). People
+use different keys. *Our leader key is the space bar, `<space>`.*
+
+One example mapping we have set up is making `<leader>d`{normal} enter the
+current date in YYYY-MM-DD form.
+
+1. Type `<leader>d`{normal} to insert the date below
+
+Today's date is: 
+
+## Lesson 7: FILE MANAGEMENT
+### Lesson 7.1: CREATING A NEW FILE
+
+Now that we know Insert mode, we can edit and save a new file in Vim.
+
+Let's do this inside another shell session so you can keep this tutorial open.
+
+To open a new shell, type `<C-space>`then `v` (separately). This is a `tmux`
+command for "vertical split". It opens a new shell next to our current one.
+
+Your cursor should be over in the new shell. To move it back and forth hold
+down `<Ctrl>` and press `h` and `l`.
+
+ 1. In the new shell prompt type this command:
+~~~ sh
+    $ nvim my_file.txt
+~~~
+Note: don't actually type the `$` key — that's just a common way to say,
+"you're typing this text in the terminal". So in the shell, 'nvim' is the
+command to start the Vim editor, 'my_file.txt' is the name of the file you wish
+to edit.
+
+ 2. Insert some text using what you learned in previous lessons.
+
+Keep the file open, we'll use it in the next lesson.
+
+### Lesson 7.2: SAVING A FILE
+
+Now let's save your file.
+
+ 1. Save the file by typing `:`{normal}. This opens *command* mode.
+ 2. In command mode, type `w` (for *write*), then `<Enter>`.
+
+Your file is now saved on your computer. Note it's still open. We just saved
+it, we didn't save and quit.
+
+Stay in the file for now. We'll learn how to exit Vim next lesson
+
+### Lesson 7.3: EXITING VIM
+
+To exit Vim:
+
+1. Making sure your cursor is still in the file we opened earlier this lesson
+   (type `<C-l>` and `<C-h>` to go back and forth), type `:`{normal} to open
+   command mode.
+
+2. Then type `q!`{normal}. The `q` is for quit, and the `!` means to discard
+   any changes made since your last save.
+
+Note: this tutorial is in Vim, so typing `:q!`{normal} in this window is also
+how you'll exit this tutorial when the time comes.
+
+Keep your other shell open, we're going to continue using it.
+
+### Lesson 7.4: CREATING A NEW FILE AND LOADING A SAVED FILE
+
+Next we'll learn how to name a file when save it. We'll also open up a file we
+previously saved.
+
+1. In your other shell, open Vim with:
+~~~ sh
+    $ nvim 
+~~~
+Notice when you open up Vim with no filename specified it defaults to an empty
+file.
+
+2. Type some text.
+
+3. Save the file by typing `:w`{normal} my_file2.txt.
+
+4. Now let's open up our first file with `:e`{normal} my_file.txt. The `e` is
+   for *edit*.
+
+5. Add some more text to it.
+
+4. Save and exit with `:x`{normal}.
+
+Note `x`{normal} is a shortcut for `wq`{normal} (write and quit).
+
+### Lesson 7.5: USING FZF TO OPEN FILES IN A DIRECTORY
+
+It's fine to open up files with `:e`{normal}, but I usually use fzf (for "fuzzy
+finder"), a plugin that lets you type in what you're looking for.
+
+1. In your other shell, open Vim with:
+~~~ sh
+    $ nvim 
+~~~
+2. Press `<leader>lf`{normal}. Remember, your leader is customizable, but
+   currently it's set to `<space>`{normal}, which is a good option.
+
+This presents you with a list of the current directory's *files*. In it, you
+can type *part* of what you're looking for (e.g. "2.txt") and it'll match. You
+can also move up and down with `<C-n>`{normal} and `<C-p>`{normal}. If you
+change your mind and want to close it without matching anything press
+`<Esc>`{normal}.
+
+3. Select `my_file2.txt` and open it.
+
+Keep the file open as you go into the next lesson.
+
+### Lesson 7.4: USING FZF TO OPEN RECENTLY EDITED FILES
+
+Last lesson, we used `<leader>lf`{normal}, which searches for files inside the
+current directory.  We can also search for the most *recent* files, regardless
+of directory. 
+
+1. Press `<leader>lr`{normal} (the r is for *recent*).
+
+You get the same pop up, this time populated by files you've recently worked
+on. This is nice if you're trying to open something outside the current
+directory.
+
+2. Select `my_file.txt` and open it.
+
+Keep the file open as you go into the next lesson.
+
+### Lesson 7.5: USING FZF TO OPEN A BUFFER
+
+So `<leader>lf`{normal} searches for files in the directory we're in and
+`<leader>lr`{normal} searches files we've recently edited. The last option
+searches for files, called *buffers* we have open:
+
+1. Press `<leader>lb`{normal}
+2. Select `my_file2.txt`
+
+## Lesson 8: VISUAL MODE
+
+The two most important Vim modes are Normal and Insert modes, but there's also
+Visual mode. In Visual mode, you "highlight" or "select" text visually, then do
+something to it using an operator key.
+
+### Lesson 8.1 VISUAL VS NORMAL MODE
+
+Although Visual mode is handy, most things you can do with it you can also do
+with regular Normal mode. To make the clear, let's do the the same task using
+both Normal and Visual modes.
+
+We'll be copying some text, then pasting it onto the end of another line.
+
+#### NORMAL MODE
+
+1. Move your cursor to the start of "vs" below:
+
+The start vs the end of this sentence.
+
+2. Copy to the end of the sentence with `y$`{normal}.
+
+3. Add it onto the line below:
+
+The start of that sentence 
+
+#### VISUAL MODE
+
+1. Move your cursor to the start of "vs" below:
+
+The start vs the end of this sentence.
+
+2. Type `v`{normal} to enter visual mode.
+
+3. Tap `l`{normal} a few times, notice how the text is highlighted.
+
+4. Press `$`{normal} to move to the end of the line.
+
+5. Press `y`{normal} to copy the text you have selected.
+
+6. Paste it on the end of the line below
+
+The start of that sentence 
+
+Note most operators you can use in regular Vim (delete, yank etc) also work
+after you've selected text using Visual mode.
+
+### Lesson 8.2: LINEWISE VISUAL MODE
+
+You enter normal visual mode by typing `v`{normal} (lowercase v).
+
+You can also enter *linewise* visual mode by pressing `V`{normal} (uppercase
+V).
+
+In linewise Visual mode, you select enter lines, which is sometimes handy.
+Let's look at an example that will make the differences clear:
+
+#### REGULAR VISUAL MODE
+
+1. Move the cursor to the start of the second sentence ("This is the second
+   sentence!") in the paragraph below. Press `v`{normal} to enter visual mode.
+
+2. Visually select the to the rest of the paragraph (hint: try pressing `j` and
+   `k`).
+
+3. Type `gU` to make this visual selection uppercase. 
+
+This is the first sentence. This is the second sentence! This is the third
+sentence, it's important. This is the penultimate (second to last sentence).
+This is the last sentence.
+
+(Note: `gU` is an operator we haven't covered yet that makes text uppercase.
+`gu` makes text all lowercase. Other operators would work too, e.g. `y`{normal}
+to copy or `d`{normal} to delete.)
+
+#### LINEWISE VISUAL MODE
+
+1. Now start at the second sentence of the next paragraph. This time enter
+   Visual Line mode by pressing `V` (uppercase V). Note how it selects the
+   whole line.
+
+2. Press `j` to select multiple lines until you select the whole thing.
+
+3. Make it uppercase by pressing `gU`.
+
+This is the first sentence of the *second* paragraph. Should we make this
+second sentence into a question? Here's a very long third (aka second to last)
+sentence — it even includes some parentheses and some dashes! This is the last
+sentence.
+
+## Lesson 8.3: INDENTING
+
+One task I often use linewise Visual mode for is indenting text.
+
+1. Move the cursor to the text below and type `V`{normal} to enter linewise
+   Visual mode. 
+
+2. Press `j` a few times to select the whole paragraph.
+
+This is the first sentence of the *second* paragraph. Should we make this
+second sentence into a question? Here's a very long third (aka second to last)
+sentence — it even includes some parentheses and some dashes! This is the last
+sentence.
+
+3. Press `>` to indent it.
+
+4. Indent it again by pressing the dot operator `.`{normal}.
+
+5. Now do the same thing, but dedent it back where it was with `<`.
+
+## Lesson 9: A FEW MORE MOTIONS
+
+One benefit to Visual mode is it let's us see how certain motions work: in
+Visual mode we can type a motion it'll highlight the text.
+
+Let's use that feature now to learn a few other very useful motions.
+
+### Lesson 9.1: IN AND AROUND IN VISUAL MODE
+
+So far, we've learned motions like `w`, `b`, `0` and `$`. Two other powerful
+motions are *in* and *around*.
+
+It's easiest to show how they work with an example. Say we want to select the
+footnote in the line below.
+
+1. Move the cursor somewhere inside the square brackets.
+
+2. Type `v`{normal} to enter Visual mode.
+
+3. Now type `a]`. This tells Vim to select "around brackets",
+   everything inside the brackets + the brackets themselves.
+
+4. Type `<Esc>` to clear the selection.
+
+5. Now try it with `vi]`{normal}. This tells Vim to select "inside brackets",
+   everything inside the brackets but *not* the brackets themselves.
+
+A predecessor to Vim[footnote: the vi editor] came out in 1976!
+
+### Lesson 9.2: IN AND AROUND IN NORMAL MODE
+
+Above we were working with in and around in visual mode. That it made it easier
+to (literally) see what was going on, but in and around are normal operators
+that can be used with Vim's regular grammer system too.
+
+1. Move the cursor somewhere inside the parenthesis below:
+
+2. Yank the text *inside* the parentheses with `yi)`{normal}
+
+3. Use the yanked text to complete the Q and A below.
+
+Vim (for Vi IMproved) was invented by Bram Moolenaar in 1991.
+
+Q: What does Vim stand for?
+A: Vim stands .
+
+### Lesson 9.3: IN AND AROUND WORDS AND PARAGRAPHS
+
+Apart from punctuation — square or curly brackets, parentheses and quotation
+marks — the in and around operators also work with quotation marks, words, and
+paragraphs.
+
+To use, you can replace the bracket character with `w`{normal} or `p`{normal}.
+For words and paragraphs *in* acts on *just the text*, while *around* includes
+*trailing whitespace*.
+
+#### WORD
+
+1. Move the cursor somewhere inside Supercalifragilisticexpialidocious below.
+
+2. Press `daw`{normal} to delete it + the space after it.
+
+There is Supercalifragilisticexpialidocious a word that doesn't belong here.
+
+#### PARAGRAPH
+
+1. Move the cursor somewhere inside the second paragraph below.
+
+2. Type `dap`{normal} to delete the second paragraph + blank line below it.
+
+3. Move to the blank line below the last paragraph.
+
+4. Press `p`{normal} to paste the deleted paragraph here. Note: due to a bug
+   in Vim's green checkmark system, you might see a ✗ on line 854 even after
+   correctly making this change. Don't worry about it.
+
+Vim's forerunner, Stevie (ST Editor for VI Enthusiasts), was created by Tim
+Thompson for the Atari ST in 1987 and further developed by Tony Andrews and
+G.R. (Fred) Walter.
+
+At the time of its first release, the name 'Vim' was an acronym for 'Vi
+IMitation', but this changed to 'Vi IMproved' late in 1993.
+
+Basing his work on Stevie, Bram Moolenaar began working on Vim for the Amiga
+computer in 1988, with the first public release (Vim v1.14) in 1991.
+
+### Lesson 9 Summary
+
+In this lesson you learned about the in and around motions, which — combined
+with Vim's operators — are very powerful ways to modify text inside punctuation
+marks, as well as words and paragraphs.
+
+## Lesson 10: JOINING AND REFORMATTING TEXT
+
+One thing it's useful to do in Vim is keep all your lines (both code and text)
+under 80 characters wide. 80 characters is the dark line you see on the right
+hand side of the screen. If you look around at at this tutorial, you'll notice
+the lines are generally shorter than this cutoff.
+
+In this section we'll learn about the operators Vim has for making this easy.
+
+### Lesson 10.1: REFORMAT IN VIM
+
+The main operator for reformatting text in Vim is `gq`.
+
+1. Move the cursor to the line below and type `gql`{normal} to reformat it
+
+This is a really, really, really, really long line of text, more than 80 characters!
+
+Because Vim recognizes this as plain text, reformatting it just wraps it under
+80 characters. If this was code, e.g. a Python file, `gq`{normal} would
+reformat it according to Python's syntax.
+
+Note: `gq`{normal} is the operator here, `l`{normal} is the motion.
+
+In this case the motion doesn't matter, any of gqh, gqk or gqj would work.
+
+### Lesson 10.2: REFORMAT PARAGRAPHS
+
+One action that often comes up is reformatting entire paragraphs. For example:
+
+1. Use visual mode (start your cursor on Lorem, then press `v`{normal}, then
+   `w`) to select the first sentence of the paragraph below.
+
+2. Once it's visually selected, press `d` to delete it.
+
+3. Now press `gqip`{normal} to apply the reformat operator (`gq`) to the entire
+   paragraph (`ip`).
+
+Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim
+labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi
+anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est
+aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud
+officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat
+reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia
+voluptate. 
+
+### Lesson 10.3: REFORMAT USING VISUAL MODE
+
+You can reformat after
+
+1. Go to first line and type `V`{normal} to enter linewise Visual mode.
+
+2. Press `j`{normal} until you've selected the text in all the paragraphs.
+
+3. Press `gq`{normal} to reformat it.
+
+Lorem ipsum dolor sit amet,
+officia excepteur ex fugiat reprehenderit enim
+labore culpa
+sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia.
+
+Reprehenderit
+nostrud nostrud
+ipsum Lorem est aliquip amet voluptate voluptate
+dolor minim nulla est
+proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt
+ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate.
+
+Culpa proident adipisicing id nulla nisi laboris ex in
+Lorem sunt duis officia
+eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim.
+Voluptate laboris sint cupidatat ullamco ut ea
+consectetur et est culpa et
+culpa duis.
+
+### Lesson 10 Summary
+
+In this lesson we also learned the reformatting operator `gq`{normal}. It's
+very useful to reformat entire paragraphs with `gqip`. You can also visually
+select text and then press `gq` to reformat it.
+
+## CONCLUSION 1
+- should have most of what you need now to start being productive in Vim
+- tried to combine demonstrating vim's power with minimum nec to do real work
+
+- vim is *not* something you have "mastered" or not
+  - i've been using it for 12 years and learned new things writing this tutorial
+  - see r00k's article
+
+- if this is your first time seeing Vim or working through the tutorial , i'd
+  recommend using it, trying out + getting used to the commands we've talked
+  about above
+
+- shouldn't take that long
+
+- if you've got most of that under your fingers, feel like learning more, or
+  want to learn more about power of vim you can continue
+
+- learning more:
+  - hopefully see how operators + motions are powerful
+    - there are more motions and more operators
+    - top end of file
+  - splits and multiple views in a file
+  - more on copying and pasting
+    - save stuff for later vs pasting last thing copied or deleted
+    - copy to/from outside Vim
+  - coding stuff
+    - syntax highlighting
+    - formatting/mistake checking/autocompletion with LSP
+  - searching within a document
+  - macros
+  - plugins
+  - hop navigation plugin
+  - making own note system/database
+
+## Lesson 11: MORE MOTIONS 
+
+### Lesson 11.1: THE FIND MOTION
+
+The `f`{normal} motion (for *find*) puts the cursor at the character you type.
+
+1. Start at the beginning of the line below.
+2. Press `f!`{normal} to find the `!` character.
+
+Hope you enjoy learning Vim!
+
+### Lesson 11.2: CYCLING THROUGH FIND 
+
+After you've found a character, you can press `;`{normal} to move to the next
+instance of it and `,`{normal} to move to the previous.
+
+1. Start at the beginning of the line below.
+2. Press `f!`{normal} to find the first `!` character.
+3. Press `;`{normal} and `,`{normal} a few times to cycle through `!`s.
+
+Hi there! Hope you're liking learning Vim! I know I do!
+
+### Lesson 11.3: THE TO MOTION
+
+The `t`{normal} motion (for *to*) puts the cursor *just before* the character
+you type.
+
+1. Try it with `t!`{normal} below.
+2. Just like find, you can cycle through matches with `;`{normal} and `,`{normal}
+
+Hi there! Hope you're liking learning Vim! I know I do!
+
+### Lesson 11.3: COUNTS WITH FIND
+
+Passing a count is a super powerful feature that I personally don't use that
+often, but sometimes it useful. When I *do* use it it's often with `f`{normal}
+or `t`{normal} motions.
+
+1. In the sentence below, remove the two middle sentences by typing
+   `2df!`{normal}. Hint: the cursor needs to be in the right spot, which is the
+   space right before Whoops!
+
+Hi there! Whoops! Didn't mean to type this part! Hope you liking learning Vim!
+
+### Lesson 11 Summary
+
+You learned about the find and to motions, which like our other text "subjects"
+(`w`, `e`, `b`, `$`) describe some part of text. In this case it's from the
+cursor "through" and "to" the character you entered for `f` and `t`
+respectively.
+
+After typing `f` or `t` the `;` and `,` keys navigate matches.
+
+## Lesson 12.1: BUFFERS AND SPLIT
+In a normal text editor like Word you have one "view" into the file. In Vim,
+you can have as many as you want.
+
+1. In this tutorial, press `<leader>vs`
+
+This opens a *split*, in this case a vertical one. These splits are showing the
+same file. 
+
+2. Navigate to the other split with `<C-l>` and come back with `<C-h>`. Go back
+   and forth a few times.
+
+3. In the other buffer finish the sentence:
+
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over the lazy dog.
+
+As you type, you'll see text appear in both views.
+
+## Lesson 12.2: USING SPLITS
+
+Splits can be helpful when you need to work multiple parts of the same file.
+
+1. In the other split, navigate to the top of the file with `gg`.
+2. Copy the title you see there on line 1 (`yy`).
+3. Navigate back to this split and paste it below:
+
+Paste the title (`p`) on the next line:
+# Welcome to the Neovim Tutorial
+
+## Lesson 12.3: CLOSING SPLITS
+
+When you no longer need a split you can close it.
+
+1. Navigate to the split you opened in 8.1
+2. Type
+```
+:q
+```
+3. You should be back here.
+
+## Lesson 12.4: PRACTICE
+
+Given `<leader>vs` opened a vertical split, how do you think you'd open a
+*horizontal* split?
+
+See if you can figure it out. When you do, close the buffer and move onto the
+next lesson.
+
+
+## Lesson 13.1: SEARCHING
+
+To search for a word, type / in normal mode.
+
+Press n to find the next instance.
+
+## Lesson 13.2: SEARCH FOR WORD UNDER CURSOR
+
+To search for the word your cursor is on, press \*.
+
+## Lesson 13.3: TURN OFF HIGHLIGHTS
+
+Type :noh
+
+## Lesson 14: DOUBLE YOUR VIM KNOWLEDGE 
+
+A common Vim pattern is lowercase command does something, uppercase does
+something, but backwards.
+
+For example, the `o` command puts you in Insert mode in a new line, *after* the
+line the cursor is on. Capital `O` puts you in Insert mode *above* the current
+line.
+
+### Lesson 14.1: o VS O
+
+Try it:
+
+1. Use `o` on the line below to type, "This is the 2nd line." underneath it:
+
+This is the 1st line.
+
+2. Use `O` on the line below to type to type "This is the 0th line." above it:
+
+This is the 1st line.
+
+## Lesson 13.2: p VS P
+
+The lower/upper case after/before pattern also works with `p`. Lowercase `p`
+pastes your text *after* the cursor, `P` pastes it *before*.
+
+1. Copy this entire line with `yy`:
+The second line.
+
+2. Now paste it in the right spot using `p`.
+
+The first line.
+The third line.
+The fourth line.
+
+3. Now paste it in the right spot using `P`.
+
+The first line.
+The third line.
+The fourth line.
+
+## Lesson 13.3 n vs N
+
+Remember when searching for a word, we type / in normal mode.
+
+Then `n` finds the next instance.
+
+Capital `N` finds the *previous* instance.
+
+## Lesson 13.4 EXCEPTIONS: W, B, E
+
+The exception to the lower/upper case after/before pattern are the word motions
+w, b and e.
+
+Remember,
+- e :: goes to the end of the word
+- w :: goes to the next word
+- b :: goes back a word
+
+1. Put your cursor at the start of the next line and press `e`. Press it a
+   couple times. Notice now the cursor moves
+
+vimtutor@vimforeveryone.com is an email address. 
+
+2. Now do the same thing again but with `E`
+
+vimtutor@vimforeveryone.com is an email address. 
+
+Notice how the cursor goes right to the end of the email address.
+
+They both go to the end of the "word", but while `e` considers separates words
+by punctuation (like @ or .), `E` only takes into account whitespace. Same with
+`W` and `B`.
+
+`E`, `W`, `B` are handy when working with emails or urls.
+
+### Lesson 10.3: JOIN LINES TOGETHER IN VIM
+
+In Vim, you can join two lines together on one line with the join command. In
+our setup, this is the `Y`{normal} key.
+
+1. Move your cursor to the top line of the paragraph below.
+
+2. Press `Y`{normal} (that's a capital Y) to join the top two lines.
+
+3. Press `Y`{normal} again to join the third line. Alternatively, you can press
+   the dot command `.`{normal}.
+
+Learning Vim
+is
+fun!

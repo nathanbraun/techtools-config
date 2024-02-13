@@ -1,0 +1,86 @@
+{{if eq .chezmoi.os "linux" -}}
+#!/usr/bin/bash
+{{else if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+{{ end -}}
+
+brew install zsh
+brew install bat
+brew install bc
+brew install nvim
+brew install fasd
+brew install lazygit
+brew install tmux
+brew install lsd
+brew install ghq
+brew install fzf
+
+{{if eq .chezmoi.os "darwin" -}}
+brew install reattach-to-user-namespace
+{{ end -}}
+
+
+#--------------------------------------------------
+# Shell Configurations
+#--------------------------------------------------
+OS="$(uname)"
+if [[ "$OS" == "Linux" ]] || [[ "$OS" == "Darwin" ]] ; then
+    echo
+    if [[ "$OS" == "Linux" ]]; then
+        echo "--> Please, type your password (to 'sudo apt install' the requirements):"
+        # sudo apt install zsh bat git snap -y
+        sudo apt install zsh -y
+        echo -e "\nInstalling zsh, bat, git and snap"
+    fi
+
+    echo -e "\nShell Configurations"
+    CURRENT_SHELL=$(getent passwd $(whoami) | cut -d: -f7)
+    ROOT_SHELL=$(getent passwd root | cut -d: -f7)
+    ZSH_PATH=$(which zsh)
+
+    if [ "$CURRENT_SHELL" != "$ZSH_PATH" ]; then
+        sudo usermod -s "$ZSH_PATH" $(whoami) &> /dev/null
+        echo "Default shell changed to zsh for $(whoami). You may need to log out and log back in."
+    fi
+
+    if [ "$ROOT_SHELL" != "$ZSH_PATH" ]; then
+        sudo usermod -s "$ZSH_PATH" root &> /dev/null
+        echo "Default shell changed to zsh for root. You may need to log out and log back in."
+    fi
+
+    # if mv -n ~/.zshrc ~/.zshrc_backup_$(date +"%Y-%m-%d_%H:%M:%S") &> /dev/null; then
+    #     echo -e "\n--> Backing up the current .zshrc config to .zshrc_backup-date"
+    # fi
+
+    # Install Prezto
+    if [ ! -d "${ZDOTDIR:-$HOME}/.zprezto" ]; then
+        git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+        echo "Prezto cloned successfully."
+    else
+        echo "Prezto is already installed."
+    fi
+    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/*; do
+        # Exclude README.md
+        if [[ "$(basename "$rcfile")" != "README.md" ]]; then
+            ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.$(basename "$rcfile")"
+        fi
+    done
+
+    echo -e "\nPrezto configuration complete"
+
+  # Install zplug
+  ZPLUG_HOME="$HOME/.zplug"
+  if [ ! -d "$ZPLUG_HOME" ]; then
+      echo "Installing zplug..."
+      git clone https://github.com/zplug/zplug $ZPLUG_HOME
+      # Note that you can't source zplug here since this script runs in bash
+      # You will need to source it from your .zshrc file
+  else
+      echo "zplug is already installed."
+  fi
+
+
+else
+    echo "This script is only supported on macOS and Linux."
+    exit 0
+fi

@@ -1,0 +1,14 @@
+set editing-mode vi
+set bell-style none
+
+"kj": vi-movement-mode
+
+set keymap vi-command
+"gg": beginning-of-history
+"G": end-of-history
+
+"\C-w": backward-kill-word
+"\C-p": history-search-backward
+
+set keymap vi-insert       
+"kj": vi-movement-mode
