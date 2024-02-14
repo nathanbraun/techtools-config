@@ -89,9 +89,8 @@ Some other same-line movements:
 
 3. Try out `0`{normal} and `$`{normal}.
 
-For navigating horizontally across the screen, `b`{normal} and `w`{normal} are
-usually faster than `h`{normal} and `l`{normal}, though you can use `h`{normal}
-and `l`{normal} for more fine-grained control.
+For navigating horizontally across the screen, `b` and `w` are usually faster
+than `h` and `l`, though you can use `h` and `l` for more fine-grained control.
 
 ### Lesson 2.3: MOVING THE CURSOR VERTICALLY
 
@@ -281,7 +280,7 @@ And there are subjects, or parts of the text itself. Examples:
 - the paragraph my cursor is in
 - the set of parenthesis the cursor is in
 - the text I've selected
-- to the next 'g' character
+- from the cursor to the next 'g' character
 
 Vim calls text actions *operators* and text subjects *motions*.
 
@@ -674,8 +673,8 @@ something to it using an operator key.
 ### Lesson 8.1 VISUAL VS NORMAL MODE
 
 Although Visual mode is handy, most things you can do with it you can also do
-with regular Normal mode. To make the clear, let's do the the same task using
-both Normal and Visual modes.
+with regular Normal mode. To make the clear, let's start by doing the same
+task using both Normal and Visual modes.
 
 We'll be copying some text, then pasting it onto the end of another line.
 
@@ -914,9 +913,9 @@ voluptate.
 
 ### Lesson 10.3: REFORMAT USING VISUAL MODE
 
-You can reformat after
+You can reformat text selected in visual mode too.
 
-1. Go to first line and type `V`{normal} to enter linewise Visual mode.
+1. Go to the first line below and type `V`{normal} to enter linewise Visual mode.
 
 2. Press `j`{normal} until you've selected the text in all the paragraphs.
 
