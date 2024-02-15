@@ -10,6 +10,8 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+keymap("n", "<leader>d", '"=strftime("%Y-%m-%d")<CR>p', opts)
+
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
