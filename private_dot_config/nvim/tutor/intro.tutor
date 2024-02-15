@@ -25,12 +25,12 @@ Vim is a modal editor. That means it has "modes".
    basically anything you'd want besides type text and have it appear on the
    screen. Turns out this is a lot! More than you'd think at first.
 
-Important: **these two modes use the same keys.** For example, in Insert mode,
-typing `j` puts a `j` on the screen. In Normal mode, typing `j`{normal}
-moves your cursor down a line.
+Important: **these two modes use the same keys.** In Insert mode, typing `j`
+puts a `j` on the screen. In Normal mode, typing `j` moves your cursor down a
+line.
 
-The way we have Vim set up, **you can always press `j` and `k` simultaneously
-(`jk`) to get in Normal mode.**
+The way we have Vim set up, *you can always press j and k simultaneously (jk)
+to get in Normal mode.*
 
 If you're already in Normal mode, pressing `jk` won't do anything, so there's
 no harm in pressing it if you're unsure.
@@ -38,8 +38,7 @@ no harm in pressing it if you're unsure.
 To complete this lesson:
 
 1. Make sure you're in Normal mode.
-2. Press the `j`{normal} key to move the cursor down until you can see the
-   start of Lesson 2.
+2. Press the `j` key to move the cursor down until you can see Lesson 2.
 
 ## Lesson 2: NORMAL MODE - MOVING THE CURSOR
 
@@ -48,15 +47,15 @@ reading, revising or (in case of code) running text than it is to be writing it
 for the very first time.
 
 A big part of being in Normal mode is moving cursor around the screen - that's
-this lesson. When you're ready to get started, press `j`{normal} until you can
-see Lesson 2.1.
+this lesson. When you're ready to get started, press `j` until you can see
+Lesson 2.1.
 
 ### Lesson 2.1: h, j, k, l AS ARROW KEYS
 
 To move the cursor, press the `h`, `j`, `k`, `l` keys as indicated.
 
         ↑
-        k         Hint: The h key is at the left and moves left.
+        k         Note: The h key is at the left and moves left.
    ← h    l →           The l key is at the right and moves right.
        j                The j key looks like a down arrow.
        ↓
@@ -162,7 +161,7 @@ In Normal mode, pressing `x`{normal} will delete the key under the cursor.
 
  3. Press the x key to delete the unwanted character.
 
- 4. Repeat steps 2 through 4 until the sentence is correct.
+ 4. Repeat steps 2 through 4 until the sentence is correct (marked ✓).
 
 The ccow jumpedd ovverr thhe mooon.
 
@@ -202,7 +201,7 @@ command that many times.
 
 The cow jumped over the moooooooooooooooooooooooon.
 
-Counts work on most commands, including the the navigation ones we learned in
+Counts work on most commands, including the navigation ones we learned in
 Lesson 2.
 
 3. Type `10j`{normal} to move the cursor down (`j`) 10 times.
@@ -259,13 +258,13 @@ Counts are powerful, but there are often faster alternatives.
 
 To undo a change, press `u`{normal}. To redo, press `<C-r>`{normal}.
 
-## Lesson 4: VIM'S GRAMMER
+## Lesson 4: VIM'S GRAMMAR
 
 Human languages like English aren't random or something we just memorize. They
 have subjects, verbs and adjectives that we fit together in mostly predictable
 ways.
 
-It's the same with Vim. There are *actions*, or things we can do with text. For
+It's the same with Vim. There are **actions**, or things we can do with text. For
 example:
 - delete
 - copy
@@ -274,24 +273,24 @@ example:
 - indent
 - format
 
-And there are *subjects*, or parts of the text itself. Examples:
-- from the cursor to the end of the line
+And there are **subjects**, or *parts of the text itself*. Examples:
 - the word my cursor is in
 - the paragraph my cursor is in
-- the set of parenthesis the cursor is in
 - the text I've selected
+- from the cursor to the end of the line
+- the set of parenthesis the cursor is in
 - from the cursor to the next 'g' character
 
-Vim calls text actions *operators* and text subjects *motions*.
+Vim calls text actions **operators** and text subjects **motions**.
 
-Though calling them *actions* and *subjects* make the grammer nature of Vim
+Though calling them *actions* and *subjects* make the grammar nature of Vim
 clearer, we'll stick to Vim's terminology for the rest of the tutorial. Just
 remember:
 
-In the grammer of Vim:
-- *operators* = *actions* = *things you can do to text* (delete, copy, etc)
-- *motions* = *subjects* = *parts of the text itself* (word, to the end of the
-  line, this paragraph)
+In the grammar of Vim:
+- **operators** = **actions** = things you can *do* to text (delete, copy, etc)
+- **motions** = **subjects** = *parts* of the text itself (word, to the end of
+  the line, this paragraph)
 
 Combining these operators + motions are another big part of working in Normal
 mode in Vim.
@@ -309,7 +308,7 @@ We already know some motions, for example:
 
 ### Lesson 4.2: OUR FIRST OPERATOR: DELETE
 
-Let's combine some motions and operators to start using Vim's grammer.
+Let's combine some motions and operators to start using Vim's grammar.
 
 *Deleting* is one operation we can do on text. To delete text in Vim, type the
 operator `d`{normal} (for delete), and then the motion.
@@ -319,7 +318,7 @@ end of the line with `d$`{normal}.
 
 1. Use `dw`{normal} to fix the following sentence:
 
-There are a some words fun that don't belong paper in this sentence.
+There are some words fun that don't belong paper in this sentence.
 
 2. Use `d$`{normal} to fix the following sentence:
 
@@ -334,7 +333,7 @@ Somebody messed up Somebody messed up the start of this sentence.
 Another text operation is *copying*. For historical reasons, copying text in
 Vim is called *yanking*.
 
-You yank text with the `y` operator, then you *paste* it with `p`.
+You yank text with the `y`{normal} operator, then you *paste* it with `p`.
  
 1. Type `yw`{normal} to yank the following word:
 
@@ -371,7 +370,7 @@ This is line 4.
 
 ### Lesson 4 SUMMARY
 
-Vim has a grammer, with **operators** (things you can do to text) and
+Vim has a grammar, with **operators** (things you can do to text) and
 **motions** (parts of the text itself).
 
 They're called *motions* because pressing them by themselves moves the cursor
@@ -395,10 +394,11 @@ back, etc.
 In Insert mode, when you type `w` or `b`, a `w` or `b` appears on the screen.
 Insert mode is like Microsoft Word or Google Docs.
 
-Vim newcomers sometimes spend too much time in Insert mode. There's a reason
-moving around, deleting, copying etc is the one called *Normal* mode. It's the
-mode you'll normally be in. If you need to enter some text or fix a typo,
-quickly get in Insert mode, type it, then get back to Normal mode.
+Because it's more familiar, Vim newcomers sometimes spend too much time in
+Insert mode. There's a reason moving around, deleting, copying etc is the one
+called *Normal* mode. It's the mode you'll normally be in. If you need to enter
+some text or fix a typo, quickly get in Insert mode, type it, then get back to
+Normal mode.
 
 ### Lesson 5.1: INSERT MODE
 
@@ -458,7 +458,7 @@ The `o`{normal} key will make a new line on the line *below* your cursor, and
 put you in insert mode in it.
 
 1. Move the cursor to Eat Breakfast and type `o`{normal} to add "- Learn Vim"
-   (include the hyphen) to the todo list below:
+   (include the hyphen) to the TODO list below:
 2. Delete Do nothing with `dd`{normal}.
 
 LIST FOR TODAY
@@ -690,7 +690,7 @@ The start vs the end of this sentence.
 
 2. Copy to the end of the sentence with `y$`{normal}.
 
-3. Add it onto the line below:
+3. Add it onto the line below with `p`{normal}:
 
 The start of that sentence 
 
@@ -715,17 +715,9 @@ The start of that sentence
 Note most operators you can use in regular Vim (delete, yank etc) also work
 after you've selected text using Visual mode.
 
-### Lesson 8.2: LINEWISE VISUAL MODE
+### Lesson 8.2: VISUAL MODE CAN SPAN MULTIPLE LINES
 
 You enter normal visual mode by typing `v`{normal} (lowercase v).
-
-You can also enter *linewise* visual mode by pressing `V`{normal} (uppercase
-V).
-
-In linewise Visual mode, you select enter lines, which is sometimes handy.
-Let's look at an example that will make the differences clear:
-
-#### REGULAR VISUAL MODE
 
 1. Move the cursor to the start of the second sentence ("This is the second
    sentence!") in the paragraph below. Press `v`{normal} to enter visual mode.
@@ -747,11 +739,13 @@ everything but the first sentence is in UPPERCASE, you did it right.)
 uppercase. `gu` makes text all lowercase. Other operators would work too, e.g.
 `y`{normal} to copy or `d`{normal} to delete.)
 
-#### LINEWISE VISUAL MODE
+### Lesson 8.3: LINEWISE VISUAL MODE
 
-1. Now start at the second sentence of the next paragraph. This time enter
-   Visual Line mode by pressing `V` (uppercase V). Note how it selects the
-   whole line.
+In linewise Visual mode, you select entire lines, which is sometimes handy. You
+can enter it by pressing `V`{normal} (uppercase V).
+
+1. Start at the second sentence of the next paragraph. This time enter Visual
+   Line mode by pressing `V` (uppercase V). Note how it selects the whole line.
 
 2. Press `j` to select multiple lines until you select the whole thing.
 
@@ -766,12 +760,12 @@ sentence.
 the other two. This is a bug in Vim's tutorial system. If everything is in
 UPPERCASE, you did it right.)
 
-## Lesson 8.3: INDENTING
+## Lesson 8.4: INDENTING
 
 One task I often use linewise Visual mode for is indenting text.
 
-1. Move the cursor to the text below and type `V`{normal} to enter linewise
-   Visual mode. 
+1. Move the cursor anywhere in the top line of the text below and type
+   `V`{normal} to enter linewise Visual mode. 
 
 2. Press `j` a few times to select the whole paragraph.
 
@@ -820,7 +814,7 @@ A predecessor to Vim[footnote: the vi editor] came out in 1976!
 
 Above we were working with in and around in visual mode. That it made it easier
 to (literally) see what was going on, but in and around are normal operators
-that can be used with Vim's regular grammer system too.
+that can be used with Vim's regular grammar system too.
 
 1. Move the cursor somewhere inside the parenthesis below:
 
