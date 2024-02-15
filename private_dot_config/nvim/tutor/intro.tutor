@@ -879,7 +879,7 @@ In this lesson you learned about the in and around motions, which — combined
 with Vim's operators — are very powerful ways to modify text inside punctuation
 marks, as well as words and paragraphs.
 
-## Lesson 10: JOINING AND REFORMATTING TEXT
+## Lesson 10: REFORMATTING TEXT
 
 One thing it's useful to do in Vim is keep all your lines (both code and text)
 under 80 characters wide. 80 characters is the dark line you see on the right
@@ -888,14 +888,14 @@ the lines are generally shorter than this cutoff.
 
 In this section we'll learn about the operators Vim has for making this easy.
 
-### Lesson 10.0: A NOTE ON ✓ and ✗ 
+*NOTE ON ✓ and ✗*
 
-We've already seen some cracks in the accuracy of our ✓'s and ✗'s. This feature
-is more rudimentary and meant for checking simple edits to single lines than it
-is for working with larger, multi paragraph edits.
+We've already seen some cracks in the accuracy of our ✓'s and ✗'s. These are
+built-in to Vim, but they're really meant for checking simple edits to single
+lines than it is for working with larger, multi paragraph edits.
 
-So what we'll do instead is include the answer above with ✓, and you can edit
-the text below it to make it look like the answer. But your text won't
+So what we'll do instead is you can make your text edits, then I'll include the
+answer below (with a ✓) for you to compare. But your changes will no longer
 automatically update from ✗ to ✓, sorry.
 
 ### Lesson 10.1: REFORMAT IN VIM
@@ -904,10 +904,11 @@ The main operator for reformatting text in Vim is `gq`{normal}.
 
 1. Move the cursor to the line below and type `gql`{normal} to reformat it
 
+This is a really, really, really, really long line of text, more than 80 characters!
+
+Answer:
 This is a really, really, really, really long line of text, more than 80
 characters!
-
-This is a really, really, really, really long line of text, more than 80 characters!
 
 Because Vim recognizes this as plain text, reformatting it just wraps it under
 80 characters. If this was code, e.g. a Python file, `gq`{normal} would
@@ -931,12 +932,6 @@ One action that often comes up is reformatting entire paragraphs. For example:
 3. Now press `gqip`{normal} to apply the reformat operator (`gq`) to the entire
    paragraph (`ip`).
 
-Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum
-Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident.
-Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex
-occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat
-officia voluptate. 
-
 Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim
 labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi
 anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est
@@ -944,6 +939,13 @@ aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud
 officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat
 reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia
 voluptate. 
+
+Answer:
+Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum
+Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident.
+Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex
+occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat
+officia voluptate. 
 
 ### Lesson 10.3: REFORMAT USING VISUAL MODE
 
@@ -954,15 +956,6 @@ You can reformat text selected in visual mode too.
 2. Press `j`{normal} until you've selected the text in all the paragraphs.
 
 3. Press `gq`{normal} to reformat it.
-
-Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim
-labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi
-anim cupidatat excepteur officia.
-
-Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate
-dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure
-elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem
-duis laboris cupidatat officia voluptate.
 
 Lorem ipsum dolor sit amet,
 officia excepteur ex fugiat reprehenderit enim
@@ -975,6 +968,28 @@ ipsum Lorem est aliquip amet voluptate voluptate
 dolor minim nulla est
 proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt
 ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate.
+
+Culpa proident adipisicing id nulla nisi laboris ex in
+Lorem sunt duis officia
+eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim.
+Voluptate laboris sint cupidatat ullamco ut ea
+consectetur et est culpa et
+culpa duis.
+
+Answer:
+Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim
+labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi
+anim cupidatat excepteur officia.
+
+Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate
+dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure
+elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem
+duis laboris cupidatat officia voluptate.
+
+Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia
+eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim.
+Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et
+culpa duis.
 
 ### Lesson 10 Summary
 
