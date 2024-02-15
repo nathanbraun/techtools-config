@@ -538,7 +538,7 @@ current date in YYYY-MM-DD form.
 1. Type `<leader>d`{normal} to update the text below
 
 The date this tutorial was written was 2024-02-15
-The date this tutorial is being read is 2024-02-15
+The date this tutorial is being read is 
 
 ## Lesson 7: FILE MANAGEMENT
 ### Lesson 7.1: CREATING A NEW FILE
@@ -570,8 +570,9 @@ Keep the file open, we'll use it in the next lesson.
 
 Now let's save your file.
 
- 1. Save the file by typing `:`{normal}. This opens *command* mode.
- 2. In command mode, type `w` (for *write*), then `<Enter>`.
+ 1. Save the file by typing `:`{normal}. This opens Vim's *command-line*. Note
+    opening the command-line automatically puts you in Insert mode.
+ 2. In the command-line, type `w` (for *write*), then `<Enter>`.
 
 Your file is now saved on your computer. Note it's still open. We just saved
 it, we didn't save and quit.
@@ -584,7 +585,7 @@ To exit Vim:
 
 1. Making sure your cursor is still in the file we opened earlier this lesson
    (type `<C-l>` and `<C-h>` to go back and forth), type `:`{normal} to open
-   command mode.
+   Vim's command-line.
 
 2. Then type `q!`{normal}. The `q` is for quit, and the `!` means to discard
    any changes made since your last save.
@@ -622,7 +623,8 @@ Note `x`{normal} is a shortcut for `wq`{normal} (write and quit).
 ### Lesson 7.5: USING FZF TO OPEN FILES IN A DIRECTORY
 
 It's fine to open up files with `:e`{normal}, but I usually use fzf (for "fuzzy
-finder"), a plugin that lets you type in what you're looking for.
+finder"), a plugin (that we've installed) that lets you type in what you're
+looking for.
 
 1. In your other shell, open Vim with:
 ~~~ sh
@@ -702,7 +704,7 @@ The start vs the end of this sentence.
 
 3. Tap `l`{normal} a few times, notice how the text is highlighted.
 
-4. Press `$`{normal} to move to the end of the line.
+4. Now press `w`{normal} a few times until you're at the end of the line.
 
 5. Press `y`{normal} to copy the text you have selected.
 
@@ -737,9 +739,13 @@ This is the first sentence. This is the second sentence! This is the third
 sentence, it's important. This is the penultimate (second to last sentence).
 This is the last sentence.
 
-(Note: `gU` is an operator we haven't covered yet that makes text uppercase.
-`gu` makes text all lowercase. Other operators would work too, e.g. `y`{normal}
-to copy or `d`{normal} to delete.)
+(Note: after the change, you may only see the ✓ on the first line, with ✗ on
+the other two. This is a bug in Vim's tutorial system. Don't worry about it. If
+everything but the first sentence is in UPPERCASE, you did it right.)
+
+(Another note: `gU` is an operator we haven't covered yet that makes text
+uppercase. `gu` makes text all lowercase. Other operators would work too, e.g.
+`y`{normal} to copy or `d`{normal} to delete.)
 
 #### LINEWISE VISUAL MODE
 
