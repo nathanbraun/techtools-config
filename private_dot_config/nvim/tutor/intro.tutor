@@ -121,11 +121,11 @@ the bottom or top.
 To recenter the view and put the line with the cursor in the middle of the
 screen you can press `zz`{normal}.
 
-1. Move the cursor down to Lesson 2 SUMMARY below
-2. Press `zz`{normal} to recenter the view.
-
 You can recenter the view whenever aesthetically convenient. If you're scanning
 a long text file and want to do it after every few line movements that's fine.
+
+1. Move the cursor down to Lesson 2 SUMMARY below
+2. Press `zz`{normal} to recenter the view.
 
 ### Lesson 2 SUMMARY
 
@@ -265,7 +265,7 @@ Human languages like English aren't random or something we just memorize. They
 have subjects, verbs and adjectives that we fit together in mostly predictable
 ways.
 
-It's the same with Vim. There are actions, or things we can do with text. For
+It's the same with Vim. There are *actions*, or things we can do with text. For
 example:
 - delete
 - copy
@@ -274,8 +274,8 @@ example:
 - indent
 - format
 
-And there are subjects, or parts of the text itself. Examples:
-- to the end of the line
+And there are *subjects*, or parts of the text itself. Examples:
+- from the cursor to the end of the line
 - the word my cursor is in
 - the paragraph my cursor is in
 - the set of parenthesis the cursor is in
@@ -289,8 +289,8 @@ clearer, we'll stick to Vim's terminology for the rest of the tutorial. Just
 remember:
 
 In the grammer of Vim:
-- *actions* = *operators* = *things you can do to text* (delete, copy, etc)
-- *subjects* = *motions* = *parts of the text itself* (word, to the end of the
+- *operators* = *actions* = *things you can do to text* (delete, copy, etc)
+- *motions* = *subjects* = *parts of the text itself* (word, to the end of the
   line, this paragraph)
 
 Combining these operators + motions are another big part of working in Normal
@@ -371,11 +371,11 @@ This is line 4.
 
 ### Lesson 4 SUMMARY
 
-Vim has a grammer, with things you can *do to text* and *parts of the text
-itself*. In Vim, these are called *operators* and *motions* respectively.
+Vim has a grammer, with **operators** (things you can do to text) and
+**motions** (parts of the text itself).
 
-They're called *motions* because pressing them by themselves moves the cursor,
-examples: `w`{normal}, `b`{normal}, `0`{normal}, `$`{normal}
+They're called *motions* because pressing them by themselves moves the cursor
+that amount, examples: `w`{normal}, `b`{normal}, `0`{normal}, `$`{normal}
 
 But you can also pair them with operators to do things like delete to the start
 of the next word (`dw`{normal}) or copy to the end of the line (`y$`{normal}).
@@ -424,8 +424,8 @@ There is some text missing from this line.
 
 ## Lesson 5.2: I AND A
 
-As you can tell by looking at it, in Normal mode the cursor is a block, one
-character wide.
+In Normal mode, notice how the cursor is a "block", one character wide. As you
+move the cursor around, it completely covers one character.
 
 `i`{normal} puts you in Insert mode to the *left* of that cursor block.
 
@@ -451,7 +451,7 @@ free and open-source, screen-based
 
 ## Lesson 5.3: MORE WAYS TO GET INTO INSERT MODE - o
 
-So far we've learned `i`{normal}, `a`{normal}, along with their start
+So far we've learned `i`{normal}, `a`{normal}, along with their beginning
 (`I`{normal}) and end (`A`{normal}) of line versions
 
 The `o`{normal} key will make a new line on the line *below* your cursor, and
@@ -471,8 +471,9 @@ LIST FOR TODAY
 The `c`{normal} key (for change) works the same way as the `d`{normal} (delete)
 key, except it'll put you in Insert mode after deleting the text.
 
-1. Use `c$`{normal} to change the sentence below to say Learning Vim is fun!
+1. Use `c$`{normal} to fix the sentence below.
 
+Learning Vim is fun!
 Learning Vim is what again?
 
 2. Use `cw`{normal} to fix sentence below. Make sure you go back to Normal mode
