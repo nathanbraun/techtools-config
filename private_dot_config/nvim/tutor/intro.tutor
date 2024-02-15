@@ -860,7 +860,7 @@ There is Supercalifragilisticexpialidocious a word that doesn't belong here.
 3. Move to the blank line below the last paragraph.
 
 4. Press `p`{normal} to paste the deleted paragraph here. Note: due to a bug
-   in Vim's green checkmark system, you might see a ✗ on line 867 even after
+   in Vim's green checkmark system, you might see a ✗ on line 871 even after
    correctly making this change. Don't worry about it.
 
 Vim's forerunner, Stevie (ST Editor for VI Enthusiasts), was created by Tim
@@ -888,11 +888,24 @@ the lines are generally shorter than this cutoff.
 
 In this section we'll learn about the operators Vim has for making this easy.
 
+### Lesson 10.0: A NOTE ON ✓ and ✗ 
+
+We've already seen some cracks in the accuracy of our ✓'s and ✗'s. This feature
+is more rudimentary and meant for checking simple edits to single lines than it
+is for working with larger, multi paragraph edits.
+
+So what we'll do instead is include the answer above with ✓, and you can edit
+the text below it to make it look like the answer. But your text won't
+automatically update from ✗ to ✓, sorry.
+
 ### Lesson 10.1: REFORMAT IN VIM
 
 The main operator for reformatting text in Vim is `gq`{normal}.
 
 1. Move the cursor to the line below and type `gql`{normal} to reformat it
+
+This is a really, really, really, really long line of text, more than 80
+characters!
 
 This is a really, really, really, really long line of text, more than 80 characters!
 
@@ -918,6 +931,12 @@ One action that often comes up is reformatting entire paragraphs. For example:
 3. Now press `gqip`{normal} to apply the reformat operator (`gq`) to the entire
    paragraph (`ip`).
 
+Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum
+Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident.
+Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex
+occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat
+officia voluptate. 
+
 Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim
 labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi
 anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est
@@ -936,6 +955,15 @@ You can reformat text selected in visual mode too.
 
 3. Press `gq`{normal} to reformat it.
 
+Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim
+labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi
+anim cupidatat excepteur officia.
+
+Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate
+dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure
+elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem
+duis laboris cupidatat officia voluptate.
+
 Lorem ipsum dolor sit amet,
 officia excepteur ex fugiat reprehenderit enim
 labore culpa
@@ -947,13 +975,6 @@ ipsum Lorem est aliquip amet voluptate voluptate
 dolor minim nulla est
 proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt
 ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate.
-
-Culpa proident adipisicing id nulla nisi laboris ex in
-Lorem sunt duis officia
-eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim.
-Voluptate laboris sint cupidatat ullamco ut ea
-consectetur et est culpa et
-culpa duis.
 
 ### Lesson 10 Summary
 
