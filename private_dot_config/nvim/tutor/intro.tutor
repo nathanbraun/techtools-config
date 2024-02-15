@@ -502,8 +502,8 @@ puts you into Insert mode after.
 In Normal mode, pressing `.`{normal} (a period, or dot) will repeat whatever
 command you just did.
 
-1. Use the `I`{normal} to fix the second line below. (Remember the `I`{normal}
-   inserts at the beginning of the line no matter where the cursor is.)
+1. Use `I`{normal} to fix the second line below. (Remember `I`{normal} inserts
+   at the beginning of the line no matter where the cursor is.)
 
 There is some text missing from this line.
 some text missing from this line.
@@ -516,7 +516,7 @@ text missing here too.
 even text missing here!
 
 3. Now use `cw`{normal} (once) and the `.` key (the other three times) to fix
-   the sentence below so that would is wood:
+   the sentence below and turn would into wood:
 
 How much would could a would chuck chuck if a would chuck could chuck would.
 
@@ -535,9 +535,10 @@ use different keys. *Our leader key is the space bar, `<space>`.*
 One example mapping we have set up is making `<leader>d`{normal} enter the
 current date in YYYY-MM-DD form.
 
-1. Type `<leader>d`{normal} to insert the date below
+1. Type `<leader>d`{normal} to update the text below
 
-Today's date is: 
+The date this tutorial was written was 2024-02-15
+The date this tutorial is being read is 2024-02-15
 
 ## Lesson 7: FILE MANAGEMENT
 ### Lesson 7.1: CREATING A NEW FILE
