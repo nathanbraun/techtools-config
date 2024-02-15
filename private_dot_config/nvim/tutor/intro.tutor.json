@@ -46,12 +46,15 @@
   "761": "SECOND SENTENCE INTO A QUESTION? HERE'S A VERY LONG THIRD (AKA SECOND TO LAST)",
   "762": "SENTENCE — IT EVEN INCLUDES SOME PARENTHESES AND SOME DASHES! THIS IS THE LAST",
   "763": "SENTENCE.",
-  "828": "Q: What does Vim stand for?",
-  "829": "A: Vim stands for Vi IMproved.",
-  "865": "Basing his work on Stevie, Bram Moolenaar began working on Vim for the Amiga",
-  "866": "computer in 1988, with the first public release (Vim v1.14) in 1991.",
-  "868": "At the time of its first release, the name 'Vim' was an acronym for 'Vi",
-  "869": "IMitation', but this changed to 'Vi IMproved' late in 1993."
+  "817": -1,
+  "831": "Vim (for Vi IMproved) was invented by Bram Moolenaar in 1991.",
+  "833": "Q: What does Vim stand for?",
+  "834": "A: Vim stands for Vi IMproved.",
+  "852": "There is a word that doesn't belong here.",
+  "870": "Basing his work on Stevie, Bram Moolenaar began working on Vim for the Amiga",
+  "871": "computer in 1988, with the first public release (Vim v1.14) in 1991.",
+  "873": "At the time of its first release, the name 'Vim' was an acronym for 'Vi",
+  "874": "IMitation', but this changed to 'Vi IMproved' late in 1993."
     }
 }
 

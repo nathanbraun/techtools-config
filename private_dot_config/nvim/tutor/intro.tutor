@@ -762,6 +762,10 @@ second sentence into a question? Here's a very long third (aka second to last)
 sentence — it even includes some parentheses and some dashes! This is the last
 sentence.
 
+(Again, after the change you may only see the ✓ on the first line, with ✗ on
+the other two. This is a bug in Vim's tutorial system. If everything is in
+UPPERCASE, you did it right.)
+
 ## Lesson 8.3: INDENTING
 
 One task I often use linewise Visual mode for is indenting text.
@@ -778,7 +782,7 @@ sentence.
 
 3. Press `>` to indent it.
 
-4. Indent it again by pressing the dot operator `.`{normal}.
+4. Indent it again by pressing `.`{normal} (the dot operator).
 
 5. Now do the same thing, but dedent it back where it was with `<`.
 
@@ -791,8 +795,9 @@ Let's use that feature now to learn a few other very useful motions.
 
 ### Lesson 9.1: IN AND AROUND IN VISUAL MODE
 
-So far, we've learned motions like `w`, `b`, `0` and `$`. Two other powerful
-motions are *in* and *around*.
+So far, we've learned motions like `w`{normal}, `b`{normal}, `0`{normal} and `$`{normal}.
+
+Two other powerful motions are *in* and *around*.
 
 It's easiest to show how they work with an example. Say we want to select the
 footnote in the line below.
@@ -801,7 +806,7 @@ footnote in the line below.
 
 2. Type `v`{normal} to enter Visual mode.
 
-3. Now type `a]`. This tells Vim to select "around brackets",
+3. Now type `a]`{normal}. This tells Vim to select "around brackets",
    everything inside the brackets + the brackets themselves.
 
 4. Type `<Esc>` to clear the selection.
@@ -855,7 +860,7 @@ There is Supercalifragilisticexpialidocious a word that doesn't belong here.
 3. Move to the blank line below the last paragraph.
 
 4. Press `p`{normal} to paste the deleted paragraph here. Note: due to a bug
-   in Vim's green checkmark system, you might see a ✗ on line 854 even after
+   in Vim's green checkmark system, you might see a ✗ on line 867 even after
    correctly making this change. Don't worry about it.
 
 Vim's forerunner, Stevie (ST Editor for VI Enthusiasts), was created by Tim
@@ -885,7 +890,7 @@ In this section we'll learn about the operators Vim has for making this easy.
 
 ### Lesson 10.1: REFORMAT IN VIM
 
-The main operator for reformatting text in Vim is `gq`.
+The main operator for reformatting text in Vim is `gq`{normal}.
 
 1. Move the cursor to the line below and type `gql`{normal} to reformat it
 
@@ -897,14 +902,16 @@ reformat it according to Python's syntax.
 
 Note: `gq`{normal} is the operator here, `l`{normal} is the motion.
 
-In this case the motion doesn't matter, any of gqh, gqk or gqj would work.
+In this single line case the motion doesn't matter, any of gqh, gqk or gqj
+would work.
 
 ### Lesson 10.2: REFORMAT PARAGRAPHS
 
 One action that often comes up is reformatting entire paragraphs. For example:
 
-1. Use visual mode (start your cursor on Lorem, then press `v`{normal}, then
-   `w`) to select the first sentence of the paragraph below.
+1. Use visual mode (start your cursor on Lorem, then press `v`{normal}, and
+   your motions (`j`{normal}, `w`{normal} or `l`{normal}) to select the first
+   sentence of the paragraph below. Everything through the space before Nisi.
 
 2. Once it's visually selected, press `d` to delete it.
 
@@ -951,8 +958,8 @@ culpa duis.
 ### Lesson 10 Summary
 
 In this lesson we also learned the reformatting operator `gq`{normal}. It's
-very useful to reformat entire paragraphs with `gqip`. You can also visually
-select text and then press `gq` to reformat it.
+very useful to reformat entire paragraphs with `gqip`{normal}. You can also
+visually select text and then press `gq`{normal} to reformat it.
 
 ## CONCLUSION 1
 - should have most of what you need now to start being productive in Vim
