@@ -1,0 +1,405 @@
+# Welcome to the Vim Tutorial - Part 2
+## Lesson 11: MORE MOTIONS 
+### Lesson 11.1: THE FIND MOTION
+
+The `f`{normal} motion (for *find*) puts the cursor at the character you type.
+
+1. Start at the beginning of the line below.
+2. Press `f!`{normal} to find the first `!` character.
+
+Hope you enjoy learning Vim! It's great!
+
+### Lesson 11.2: CYCLING THROUGH FIND 
+
+After you've found a character, you can press `;`{normal} to move to the next
+instance of it and `,`{normal} to move to the previous.
+
+1. Start at the beginning of the line below.
+2. Press `f!`{normal} to find the first `!` character.
+3. Press `;`{normal} and `,`{normal} a few times to cycle through `!`s.
+
+Hi there! Hope you're liking learning Vim! I know I do!
+
+### Lesson 11.3: THE TO MOTION
+
+The `t`{normal} motion (for *to*) puts the cursor *just before* the character
+you type.
+
+1. Try it with `t!`{normal} below.
+2. Just like find, you can cycle through matches with `;`{normal} and `,`{normal}
+
+Hi there! Hope you're liking learning Vim! I know I do!
+
+### Lesson 11.3: COUNTS WITH FIND
+
+Passing a count is a super powerful feature that I personally don't use that
+often, but sometimes it useful. When I *do* use it it's often with `f`{normal}
+or `t`{normal} motions.
+
+1. In the sentence below, remove the two middle sentences by typing
+   `2df!`{normal}. Hint: the cursor needs to be in the right spot, which is the
+   space right before Whoops!
+
+Hi there! Whoops! Didn't mean to type this part! Hope you liking learning Vim!
+
+### Lesson 11.4: OPERATORS AND THE TO MOTION
+
+Now let's delete the two middle sentences using the *to* motion.
+
+1. Start at the beginning of the sentence below.
+2. Press `fW`{normal} to move to the `W` in Whoops.
+3. Prett `dtH`{normal} to delete everthing up to the `H` in Hope.
+
+Hi there! Whoops! Didn't mean to type this part! Hope you liking learning Vim!
+
+### Lesson 11: SUMMARY
+
+You learned about the find and to motions, which like our other text "subjects"
+(`w`, `e`, `b`, `$`) describe some part of text. In this case it's from the
+cursor "through" and "to" the character you entered for `f` and `t`
+respectively.
+
+After typing `f` or `t` the `;` and `,` keys navigate matches.
+
+## Lesson 12: BUFFERS AND SPLIT
+In a normal text editor like Word you have one "view" into the file. In Vim,
+you can have as many as you want.
+
+## Lesson 12.1: VERTICAL SPLITS
+
+Let's try it out.
+
+1. In this tutorial, press `<leader>vs`
+
+This opens a *split*, in this case a vertical one. These splits are showing the
+same file. 
+
+2. Navigate to the other split with `<C-l>` and come back with `<C-h>`. Go back
+   and forth a few times.
+
+3. In the other buffer finish the sentence:
+
+The quick brown fox jumped over the lazy dog.
+The quick brown fox jumped over
+
+As you type, you'll see text appear in both views.
+
+## Lesson 12.2: USING SPLITS
+
+Splits can be helpful when you need to work multiple parts of the same file.
+
+### INTERLUDE: MOVING AROUND THE FILE WITH G
+We didn't cover these earlier because I didn't want you to lose your place, but
+now that we have another split open it's no problem.
+
+Here are some more commands for moving around the files:
+
+`gg`{normal} :: moves the cursor to the top of a file
+`G`{normal} :: moves the cursor to the bottom of the file
+`xG`{normal} :: moves the cursor to line number `x`
+`''`{normal} :: jump back to where you last were
+
+### USING G IN OUR SPLITS
+
+1. In the other split, press `gg`{normal} to go to top of the file.
+2. Copy the top with `yy`{normal}.
+3. Navigate back to this split and paste it below:
+
+Paste the title (`p`) below:
+
+-- replace this line with the text from the top of the file --
+
+4. In the other split, press `G`{normal} to go to the bottom of the file.
+5. Copy the last line.
+6. Move back here by pressing `''`{normal}
+7. Move the cursor back to the first split on the left side.
+
+-- replace this line with the last line of the file --
+
+8. Type `121G`{normal} to move to the next section on line 121.
+
+## Lesson 12.3: SPLITS WITH DIFFERENT FILES
+It's very common to have different files open in different splits.
+
+1. In right side split we opened up, press `<leader>lr`{normal} to open a list
+   of recent files.
+2. Open up one of your recent files.
+
+Notice how the name of the file appears with a white background at the top of
+the terminal. This is a list of open buffers. You can pick out one of them to
+switch to with `<leader>lb`.
+
+## Lesson 12.4: EQUALIZING SPLITS
+
+Sometimes buffers can take up different amounts of space, making them hard to
+read. This can happen with Tmux or if you have other windows open next to your
+terminal .
+
+1. Open and close a new Tmux terminal split by pressing `<C-space>v`, then
+   typing `exit` into the new terminal.
+2. Notice how the buffer sizing is messed up in Vim.
+3. Press `<leader>=` to reset them so they take up an equal amount of space.
+
+## Lesson 12.5: CLOSING SPLITS
+
+When you no longer need a split you can close it.
+
+1. Navigate to the split you opened in 8.1
+2. Type
+```
+:q
+```
+3. You should be back here.
+
+## Lesson 12.5: SPLIT PRACTICE
+
+Given `<leader>vs` opened a vertical split, how do you think you'd open a
+*horizontal* split?
+
+See if you can figure it out. When you do, close the buffer and move onto the
+next lesson.
+
+## Lesson 13: REGISTERS
+
+On a normal computer you copy text with `<C-c>` and paste whatever you've
+copied with `<C-v>`. Vim does this too with `y`{normal} and `p`{normal}.
+
+But Vim also lets you copy more than one thing at a time. It does this with
+**registers**, which essentially are places to store text. I picture them as
+slots, like in an office mailroom.
+
+Each register has a single character name, either a letter, digit, or symbol.
+
+You can tell Vim which register you want to use by typing `"`{normal} and the
+register name, then copying, deleting or pasting like normal.
+
+### Lesson 13.1: GETTING TEXT INTO REGISTERS
+
+1. Let's yank the line below to register `a`. Type `"ayy`{normal} (`"a`{normal}
+   specifies the name of the register, `yy`{normal} copies the line).
+
+All Vim users should learn registers (why?).
+
+2. Now -- with your cursor inside the parenthesis -- use `"byi)`{normal} to
+   yank the text inside the parenthesis to register b.
+
+Vim's registers (which enable efficient editing) can be names, symbols or
+numbers.
+
+### Lesson 13.2: GETTING TEXT OUT OF REGISTERS
+
+Now let's use our a and b registers to make the lines match below.
+
+1. Replace the non-matching line with the text we copied to register `a`{normal}.
+   (Hint: select it with linewise Visual mode, then replace it with `"ap`{normal}).
+
+2. Replacing the text inside the parenthesis with register `b`. (Hint: select
+   the old text in Visual mode, then paste the new text from `"b`{normal}).
+   
+All Vim users should learn registers (which enable efficient editing).
+Make this line the same as above.
+
+### Lesson 13.3: THE CLIPBOARD REGISTER
+
+So far we've used the `a` and `b` registers. These are called **named
+registers**, and go up to `z`. They're good for setting aside text you want to
+use later. We also said registers could also be single digits (0-9) or symbols.
+
+The most important register is the *system clipboard register*, which is
+denoted by the `*` symbol (or `+` on some systems). It stores or gets text from
+the system clipboard.
+
+This comes up all the time. If use Vim a lot (e.g. for writing a memo or
+drafting an email) eventually you're going to be able to want to get that text
+into some other program (Google docs or an email client). The system register
+is how you do that.
+
+#### COPYING FROM VIM AND PASTING TO THE OUTSIDE WORLD
+Let's start in Vim and copy text to the system clipboard.
+
+1. I have some quotes that I like up on my personal website. Let's check them
+   out. Yank the URL below to the system clipboard register with `"*yy`.
+
+https://nathanbraun.com/quotes
+
+2. Opening up your web browser and paste in the URL to make sure it worked.
+
+Nice, we've successfully copied text from Vim and pasted it somewhere else.
+
+#### COPYING FROM THE OUSTSIDE WORLD AND PASTING TO VIM
+
+Now let's do the reverse: copy text from somewhere else on our computer, then
+paste it into Vim. This works similarly.
+
+1. In your browser, copy the text of first quote on https://nathanbraun.com/quotes
+   to your clipboard.
+
+2. Paste it from the \* register to update the text below.
+
+""
+- Charlie Munger
+
+### Lesson 13.4: VIM-PEEKABO
+
+The register system in Vim is great, but sometimes it's hard to keep track of
+which text is where. To deal with that, I use a simple plugin called
+vim-peekabo. It shows a window with all the text in your registers and pops up
+automatically when you start to use one with `"`{normal}.
+
+1. Press `"`{normal} to bring the vim-peekabo window up.
+2. Note the text we copied earlier in the `a`{normal} and `b`{normal} registers.
+3. Press `<esc>` to close the window.
+
+## Lesson 13: QUICKLY MOVING THE CURSOR WITH HOP
+
+Hop is a plugin that makes it fast and easy to move the cursor around Vim.
+
+Note, it's a plugin, so not part of regular Vim. But it's useful enough to be
+included it in this tutorial.
+
+### Lesson 13.1: MOVING TO AN ARBITRARY WORD
+
+Let's move our cursor to the start of MOVING in the line above.
+
+1. With your cursor on this line, press `H`{normal} (capital H) in Normal mode.
+2. You should see a bunch of 1-2 character text overlayed on the screen.
+3. Press the characters that appear over *MOVING*.
+
+### Lesson 13.2: BEFORE AND AFTER THE CURSOR
+
+In Hop:
+
+`H`{normal} moves *left* or *before* the cursor, up to the top of the file.
+
+`L`{normal} moves *right*, or *after* the cursor, to the end of the file.
+
+1. In normal mode, toggle between pressing `H`{normal} and `L`{normal} a few
+   times. Note how it highlights words before and after the cursor.
+2. When you're done, press `<esc>` to get rid of the overlayed text without
+   moving anywhere.
+
+I find the the fastest way to use Hop is to first look at where I want to move,
+then, while staring at that spot, press the Hop key. Then I type the characters
+that pop up without looking at anything else
+
+1. Look at the heading on next lesson, 13.3 below.
+2. While you're looking at it, press `L`{normal}.
+3. Type the characters that appear to hop to it.
+4. Using `L`{normal} move to Lesson 13.3.
+
+### Lesson 13.3: HOPPING LINES
+
+So far we've used Hop to jump between *words*, but Hop works on whole lines
+too.
+
+`K`{normal} moves *up*, towards the top of the file.
+
+`J`{normal} moves *down*, towards the bottom.
+
+1. With your cursor on this line, press `K`{normal} to move back up to the
+   start of Lesson 13.3.
+2. With your cursor up there, press `J`{normal} to move to the next lesson.
+
+## Lesson 14: SEARCHING
+## Lesson 14.1: SEARCHING FOR A WORD
+
+To search for a word, type / in normal mode.
+
+Press n to find the next instance.
+
+1. Press / to bring up the search box.
+2. Search for the word *search*.
+3. Press n to move the cursor to the next instance of search, until you're in
+   Lesson 14.2.
+
+## Lesson 14.2: TURN OFF HIGHLIGHTS
+
+Searching will highlight the text what you're looking for. To turn these
+highlights off type `:noh` (for *no highlight*).
+
+1. Type :noh to turn off highlights.
+
+## Lesson 14.3: SEARCH FOR WORD UNDER CURSOR
+
+To search for the word your cursor is on, press `*`.
+
+1. Move your cursor to the word Vim in this line and press `*`.
+2. Press n until you get to Lesson 15.
+3. When you do, turn off highlights.
+
+## Lesson 15: DOUBLE YOUR VIM KNOWLEDGE 
+
+A common Vim pattern is lowercase command does something, uppercase does
+something, but backwards.
+
+For example, the `o` command puts you in Insert mode in a new line, *after* the
+line the cursor is on. Capital `O` puts you in Insert mode *above* the current
+line.
+
+### Lesson 15.1: o VS O
+
+Try it:
+
+1. Use `o` on the line below to type, "This is the 2nd line." underneath it:
+
+This is the 1st line.
+
+2. Use `O` on the line below to type to type "This is the 0th line." above it:
+
+This is the 1st line.
+
+## Lesson 15.2: p VS P
+
+The lower/upper case after/before pattern also works with `p`. Lowercase `p`
+pastes your text *after* the cursor, `P` pastes it *before*.
+
+1. Copy this entire line with `yy`:
+
+*The second line.*
+
+2. Now paste it in the right spot using `p`.
+
+*The first line.*
+*The third line.*
+*The fourth line.*
+
+3. Now paste it in the right spot using `P`.
+
+*The first line.*
+*The third line.*
+*The fourth line.*
+
+## Lesson 15.3 n vs N
+
+Remember when searching for a word, we type / in normal mode.
+
+Then `n` finds the next instance.
+
+Capital `N` finds the *previous* instance.
+
+## Lesson 15.4 EXCEPTIONS: W, B, E MOTIONS FOR WHOLE WORDS
+
+The exception to the lower/upper case after/before pattern are the word motions
+w, b and e.
+
+Remember,
+- e :: goes to the end of the word
+- w :: goes to the next word
+- b :: goes back a word
+
+1. Put your cursor at the start of the next line and press `e`. Press it a
+   couple times. Notice now the cursor moves
+
+vim.tutor@vimforeveryone.com is an email address. 
+
+2. Now do the same thing again but with `E`
+
+vim.tutor@vimforeveryone.com is an email address. 
+
+Notice how the cursor goes right to the end of the email address.
+
+They both go to the end of the "word", but while `e` considers separates words
+by punctuation (like @ or .), `E` only takes into account whitespace. Same with
+`W` and `B`.
+
+`E`, `W`, `B` are handy when working with emails or urls.

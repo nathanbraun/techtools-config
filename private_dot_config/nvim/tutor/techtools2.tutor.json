@@ -1,0 +1,23 @@
+{
+    "expect": {
+	"10": -1,
+	"21": -1,
+	"31": -1,
+	"43": "Hi there! Hope you liking learning Vim!",
+	"53": "Hi there! Hope you liking learning Vim!",
+	"82": "The quick brown fox jumped over the lazy dog.",
+	"83": "The quick brown fox jumped over the lazy dog.",
+	"110": "# Welcome to the Vim Tutorial - Part 2",
+	"117": "`E`, `W`, `B` are handy when working with emails or urls.",
+	"181": -1,
+	"186": -1,
+	"187": -1,
+	"199": "All Vim users should learn registers (which enable efficient editing).",
+	"200": "All Vim users should learn registers (which enable efficient editing).",
+	"239": "\"I think a life properly lived is just learn, learn, learn all the time.\"",
+	"240": "- Charlie Munger",
+	"358": -1
+    }
+}
+
+

@@ -1,4 +1,4 @@
-# Welcome to the Vim Tutorial
+# Welcome to the Vim Tutorial - Part 1
 
 Vim is a text editor -- a program used to read, write and edit text.
 
@@ -11,8 +11,7 @@ this case the text you're working with is a tutorial about Vim. It's
 interactive, and you'll be editing it. Don't worry about messing anything up,
 changes won't be saved.
 
-For now, press the `j`{normal} key to move the cursor down until you can see
-Lesson 1.
+For now, press the `j` key to move the cursor down until you can see Lesson 1.
 
 ## Lesson 1: MODES
 
@@ -21,7 +20,7 @@ Vim is a modal editor. That means it has "modes".
 1. In **insert** mode, you type text and it shows up on the screen. This is how
    Microsoft Word, Google docs, and pretty much every other text box everywhere
    works.
-2. In **normal** mode, you can navigate, scroll, copy, paste, indent —
+2. In **Normal** mode, you can navigate, scroll, copy, paste, indent —
    basically anything you'd want besides type text and have it appear on the
    screen. Turns out this is a lot! More than you'd think at first.
 
@@ -43,8 +42,8 @@ To complete this lesson:
 ## Lesson 2: NORMAL MODE - MOVING THE CURSOR
 
 Most of your time in Vim will be in Normal mode. It's more common to be
-reading, revising or (in case of code) running text than it is to be writing it
-for the very first time.
+reading, revising or (in the case of code) running text than it is to be
+writing it for the very first time.
 
 A big part of being in Normal mode is moving cursor around the screen - that's
 this lesson. When you're ready to get started, press `j` until you can see
@@ -93,7 +92,7 @@ than `h` and `l`, though you can use `h` and `l` for more fine-grained control.
 
 ### Lesson 2.3: MOVING THE CURSOR VERTICALLY
 
-For moving vertically, pressing <Control> and u together moves the cursor up
+For moving vertically, pressing <Control> and u together moves the cursor *up*
 half a page.
 
 Note, there are a few keys like this, so from now on instead of saying "press
@@ -126,6 +125,9 @@ a long text file and want to do it after every few line movements that's fine.
 1. Move the cursor down to Lesson 2 SUMMARY below
 2. Press `zz`{normal} to recenter the view.
 
+(Note: you can also press `zt`{normal} to put the the cursor near the top of
+the view)
+
 ### Lesson 2 SUMMARY
 
 Navigation fundamentals:
@@ -145,6 +147,7 @@ Vertical movements:
 Also:
 
  5. `zz`{normal} recenters the view
+ 6. `zt`{normal} moves the view down so the cursor is at the top of the screen
 
 There are many more useful ways to move the cursor in Vim, some of which we'll
 learn later. For now the ones in this section will go a long way.
@@ -264,7 +267,7 @@ Human languages like English aren't random or something we just memorize. They
 have subjects, verbs and adjectives that we fit together in mostly predictable
 ways.
 
-It's the same with Vim. There are **actions**, or things we can do with text. For
+It's the same with Vim. There are **actions**, or things we can do to text. For
 example:
 - delete
 - copy
@@ -277,20 +280,19 @@ And there are **subjects**, or *parts of the text itself*. Examples:
 - the word my cursor is in
 - the paragraph my cursor is in
 - the text I've selected
-- from the cursor to the end of the line
-- the set of parenthesis the cursor is in
+- from my cursor to the end of the line
+- the text inside the set of parenthesis the cursor is in
 - from the cursor to the next 'g' character
 
 Vim calls text actions **operators** and text subjects **motions**.
 
-Though calling them *actions* and *subjects* make the grammar nature of Vim
-clearer, we'll stick to Vim's terminology for the rest of the tutorial. Just
-remember:
+Though *actions* and *subjects* make the grammar nature of Vim clearer, we'll
+stick to Vim's terminology for the rest of the tutorial.
 
-In the grammar of Vim:
+Just remember, in the grammar of Vim:
 - **operators** = **actions** = things you can *do* to text (delete, copy, etc)
-- **motions** = **subjects** = *parts* of the text itself (word, to the end of
-  the line, this paragraph)
+- **motions** = **subjects** = *parts* of the text (a word, to the end of the
+  line, this paragraph)
 
 Combining these operators + motions are another big part of working in Normal
 mode in Vim.
@@ -331,8 +333,8 @@ Somebody messed up Somebody messed up the start of this sentence.
 ### Lesson 4.3: ANOTHER OPERATOR: COPYING
 
 Another text operation is *copying*. For historical reasons, copying text in
-Vim is called *yanking*.
-
+Vim is called *yanking*, while *pasting* it is sometimes called *putting*.
+ 
 You yank text with the `y`{normal} operator, then you *paste* it with `p`.
  
 1. Type `yw`{normal} to yank the following word:
@@ -381,7 +383,7 @@ of the next word (`dw`{normal}) or copy to the end of the line (`y$`{normal}).
 
 Generally the "whole line" version of an operator is to press the key twice.
 
-So far we've just combined a few motions and operators to get a feel for how
+In this lesson we combined a few motions and operators to get a feel for how
 Vim works. Later we'll learn more of both and see how this is a big part of
 what makes Vim so powerful.
 
@@ -451,7 +453,7 @@ free and open-source, screen-based
 
 ## Lesson 5.3: MORE WAYS TO GET INTO INSERT MODE - o
 
-So far we've learned `i`{normal}, `a`{normal}, along with their beginning
+So far we've learned `i`{normal}, `a`{normal}, along with their start
 (`I`{normal}) and end (`A`{normal}) of line versions
 
 The `o`{normal} key will make a new line on the line *below* your cursor, and
@@ -529,8 +531,10 @@ In Vim, these are often done via a shortcut of the form:
 
 `<leader><key>`{normal} in Normal mode.
 
-Where `<leader>`{normal} is some key (e.g. comma, backslash, space bar). People
-use different keys. *Our leader key is the space bar, `<space>`.*
+Where `<leader>`{normal} is some key (e.g. comma, backslash, space bar). It's
+configurable, and people use different keys.
+
+**Our leader key is the space bar,** `<space>`.
 
 One example mapping we have set up is making `<leader>d`{normal} enter the
 current date in YYYY-MM-DD form.
@@ -547,13 +551,14 @@ Now that we know Insert mode, we can edit and save a new file in Vim.
 
 Let's do this inside another shell session so you can keep this tutorial open.
 
-To open a new shell, type `<C-space>`then `v` (separately). This is a `tmux`
-command for "vertical split". It opens a new shell next to our current one.
+1. Type `<C-space>`then `v` (separately) to open a new shell.
 
-Your cursor should be over in the new shell. To move it back and forth hold
-down `<Ctrl>` and press `h` and `l`.
+This is a `tmux` command for "vertical split". It opens a new shell next to our
+current one. Your cursor should be over in the new shell. To move it back and
+forth hold down `<Ctrl>` and press `h` and `l`.
 
- 1. In the new shell prompt type this command:
+2. Press `<c-l>` and `<c-h>` to move your cursor back and forth a few times.
+3. With your cursor in the new shell prompt type this command:
 ~~~ sh
     $ nvim my_file.txt
 ~~~
@@ -562,7 +567,8 @@ Note: don't actually type the `$` key — that's just a common way to say,
 command to start the Vim editor, 'my_file.txt' is the name of the file you wish
 to edit.
 
- 2. Insert some text using what you learned in previous lessons.
+4. Insert some text using what you learned in previous lessons.
+5. Make sure you're in Normal mode when you're done.
 
 Keep the file open, we'll use it in the next lesson.
 
@@ -570,12 +576,13 @@ Keep the file open, we'll use it in the next lesson.
 
 Now let's save your file.
 
- 1. Save the file by typing `:`{normal}. This opens Vim's *command-line*. Note
-    opening the command-line automatically puts you in Insert mode.
- 2. In the command-line, type `w` (for *write*), then `<Enter>`.
+1. With your cursor in the new file, save it by typing `:`{normal}. This opens
+   Vim's *command-line*. Note opening the command-line automatically puts you
+   in Insert mode.
+2. In the command-line, type `w` (for *write*), then `<Enter>`.
 
-Your file is now saved on your computer. Note it's still open. We just saved
-it, we didn't save and quit.
+Your file is now saved on your computer. It's still open. We just saved it, we
+didn't save and quit.
 
 Stay in the file for now. We'll learn how to exit Vim next lesson
 
@@ -590,8 +597,8 @@ To exit Vim:
 2. Then type `q!`{normal}. The `q` is for quit, and the `!` means to discard
    any changes made since your last save.
 
-Note: this tutorial is in Vim, so typing `:q!`{normal} in this window is also
-how you'll exit this tutorial when the time comes.
+Note: this tutorial takes place in Vim, so typing `:q!`{normal} in this window
+is how you'll exit this tutorial when the time comes.
 
 Keep your other shell open, we're going to continue using it.
 
@@ -668,6 +675,8 @@ searches for files, called *buffers* we have open:
 1. Press `<leader>lb`{normal}
 2. Select `my_file2.txt`
 
+Remember you can move between items with `<C-n>` and `<C-p>`.
+
 ## Lesson 8: VISUAL MODE
 
 The two most important Vim modes are Normal and Insert modes, but there's also
@@ -700,7 +709,7 @@ The start of that sentence
 
 The start vs the end of this sentence.
 
-2. Type `v`{normal} to enter visual mode.
+2. Type `v`{normal} to enter Visual mode.
 
 3. Tap `l`{normal} a few times, notice how the text is highlighted.
 
@@ -717,22 +726,24 @@ after you've selected text using Visual mode.
 
 ### Lesson 8.2: VISUAL MODE CAN SPAN MULTIPLE LINES
 
-You enter normal visual mode by typing `v`{normal} (lowercase v).
+You enter regular Visual mode by typing `v`{normal} (lowercase v).
 
-1. Move the cursor to the start of the second sentence ("This is the second
-   sentence!") in the paragraph below. Press `v`{normal} to enter visual mode.
+1. Move the cursor to the start of the second sentence ("People don't say this
+   because... ") in the paragraph below. Press `v`{normal} to enter Visual
+   mode.
 
 2. Visually select the to the rest of the paragraph (hint: try pressing `j` and
-   `k`).
+   `k` a few times).
 
 3. Type `gU` to make this visual selection uppercase. 
 
-This is the first sentence. This is the second sentence! This is the third
-sentence, it's important. This is the penultimate (second to last sentence).
-This is the last sentence.
+No one ever says 'I'd love to learn Street Fighter 2, but there are just so
+many combos!' People don’t say this because learning a game is enjoyable. You
+start off with just the basic kicks and punches, and those get you by. Later,
+you learn more advanced moves, maybe even by accident.
 
-(Note: after the change, you may only see the ✓ on the first line, with ✗ on
-the other two. This is a bug in Vim's tutorial system. Don't worry about it. If
+(Note: after the change, you may only see the ✓ on the first two lines, with ✗
+on the others. This is a bug in Vim's tutorial system. Don't worry about it. If
 everything but the first sentence is in UPPERCASE, you did it right.)
 
 (Another note: `gU` is an operator we haven't covered yet that makes text
@@ -744,21 +755,23 @@ uppercase. `gu` makes text all lowercase. Other operators would work too, e.g.
 In linewise Visual mode, you select entire lines, which is sometimes handy. You
 can enter it by pressing `V`{normal} (uppercase V).
 
-1. Start at the second sentence of the next paragraph. This time enter Visual
-   Line mode by pressing `V` (uppercase V). Note how it selects the whole line.
+1. Start at the second sentence of the next paragraph (AT FIRST...). This time
+   enter Visual Line mode by pressing `V` (uppercase V). Note how it selects
+   the whole line.
 
 2. Press `j` to select multiple lines until you select the whole thing.
 
-3. Make it uppercase by pressing `gU`.
+3. Make it all lowercase by pressing `gu`.
 
-This is the first sentence of the *second* paragraph. Should we make this
-second sentence into a question? Here's a very long third (aka second to last)
-sentence — it even includes some parentheses and some dashes! This is the last
-sentence.
+LEARNING VIM IS LIKE THIS. AT FIRST, YOU DO EVERYTHING AS SIMPLY AS POSSIBLE.
+THEN YOU START TO WONDER IF THERE ARE FASTER WAYS TO GET THINGS DONE, AND THERE
+ARE! IF YOU CHAIN THOSE COMMANDS TOGETHER THEY JUST WORK! YOU BUMP INTO THINGS
+ACCIDENTALLY, OR MAYBE YOU SPEND SOME TIME IN THE EXTENSIVE HELP FILES. OVER
+TIME, YOU BURN A FEW ADVANCED TRICKS INTO YOUR MUSCLE MEMORY.
 
 (Again, after the change you may only see the ✓ on the first line, with ✗ on
 the other two. This is a bug in Vim's tutorial system. If everything is in
-UPPERCASE, you did it right.)
+lowercase, you did it right.)
 
 ## Lesson 8.4: INDENTING
 
@@ -769,10 +782,10 @@ One task I often use linewise Visual mode for is indenting text.
 
 2. Press `j` a few times to select the whole paragraph.
 
-This is the first sentence of the *second* paragraph. Should we make this
-second sentence into a question? Here's a very long third (aka second to last)
-sentence — it even includes some parentheses and some dashes! This is the last
-sentence.
+Soon, you realize there are many ways to accomplish your edits, and you strive
+to do them in as few keystrokes as possible. This can be incredibly satisfying,
+particularly to us technical-types that seem to have a higher-than-average
+appreciation for efficiency.
 
 3. Press `>` to indent it.
 
@@ -782,8 +795,8 @@ sentence.
 
 ## Lesson 9: A FEW MORE MOTIONS
 
-One benefit to Visual mode is it let's us see how certain motions work: in
-Visual mode we can type a motion it'll highlight the text.
+One benefit to Visual mode is it let's us see (literally) how certain motions
+work. We can type a motion it'll highlight the text.
 
 Let's use that feature now to learn a few other very useful motions.
 
@@ -849,23 +862,40 @@ There is Supercalifragilisticexpialidocious a word that doesn't belong here.
 
 1. Move the cursor somewhere inside the second paragraph below.
 
-2. Type `dap`{normal} to delete the second paragraph + blank line below it.
+2. Use `dap`{normal} and `p`{normal} to reorder the 2nd and 3rd paragraphs below.
 
-3. Move to the blank line below the last paragraph.
-
-4. Press `p`{normal} to paste the deleted paragraph here. Note: due to a bug
-   in Vim's green checkmark system, you might see a ✗ on line 871 even after
-   correctly making this change. Don't worry about it.
-
-Vim's forerunner, Stevie (ST Editor for VI Enthusiasts), was created by Tim
+*Vim's forerunner, Stevie (ST Editor for VI Enthusiasts), was created by Tim
 Thompson for the Atari ST in 1987 and further developed by Tony Andrews and
-G.R. (Fred) Walter.
+G.R. (Fred) Walter.*
 
-At the time of its first release, the name 'Vim' was an acronym for 'Vi
-IMitation', but this changed to 'Vi IMproved' late in 1993.
+*At the time of its first release, the name 'Vim' was an acronym for 'Vi
+IMitation', but this changed to 'Vi IMproved' late in 1993.*
 
-Basing his work on Stevie, Bram Moolenaar began working on Vim for the Amiga
-computer in 1988, with the first public release (Vim v1.14) in 1991.
+*Basing his work on Stevie, Bram Moolenaar began working on Vim for the Amiga
+computer in 1988, with the first public release (Vim v1.14) in 1991.*
+
+#### A note on ✓ and ✗
+
+We've already seen some cracks in the accuracy of our ✓'s and ✗'s. The ability
+to check for the correct text and display a symbol depending on the results is
+built into Vim, but it's really meant for checking simple edits to one or two
+lines than working with larger, multi paragraph edits.
+
+So for the next two lessons you can make your text edits, then I'll include the
+answer below (with a ✓) for you to compare. But your changes will no longer
+automatically update from ✗ to ✓, sorry.
+
+✓ What 9.3 will look like if it's right:
+
+*Vim's forerunner, Stevie (ST Editor for VI Enthusiasts), was created by Tim
+Thompson for the Atari ST in 1987 and further developed by Tony Andrews and
+G.R. (Fred) Walter.*
+
+*Basing his work on Stevie, Bram Moolenaar began working on Vim for the Amiga
+computer in 1988, with the first public release (Vim v1.14) in 1991.*
+
+*At the time of its first release, the name 'Vim' was an acronym for 'Vi
+IMitation', but this changed to 'Vi IMproved' late in 1993.*
 
 ### Lesson 9 Summary
 
@@ -882,16 +912,6 @@ the lines are generally shorter than this cutoff.
 
 In this section we'll learn about the operators Vim has for making this easy.
 
-*NOTE ON ✓ and ✗*
-
-We've already seen some cracks in the accuracy of our ✓'s and ✗'s. These are
-built-in to Vim, but they're really meant for checking simple edits to single
-lines than it is for working with larger, multi paragraph edits.
-
-So what we'll do instead is you can make your text edits, then I'll include the
-answer below (with a ✓) for you to compare. But your changes will no longer
-automatically update from ✗ to ✓, sorry.
-
 ### Lesson 10.1: REFORMAT IN VIM
 
 The main operator for reformatting text in Vim is `gq`{normal}.
@@ -900,7 +920,8 @@ The main operator for reformatting text in Vim is `gq`{normal}.
 
 This is a really, really, really, really long line of text, more than 80 characters!
 
-✓ Answer:
+✓ What is should look like:
+
 This is a really, really, really, really long line of text, more than 80
 characters!
 
@@ -915,15 +936,12 @@ would work.
 
 ### Lesson 10.2: REFORMAT PARAGRAPHS
 
-One action that often comes up is reformatting entire paragraphs. For example:
+One action that often comes up is reformatting entire paragraphs.
 
-1. Use visual mode (start your cursor on Lorem, then press `v`{normal}, and
-   your motions (`j`{normal}, `w`{normal} or `l`{normal}) to select the first
-   sentence of the paragraph below. Everything through the space before Nisi.
+1. Using Visual mode, select and delete the first sentence of the paragraph
+   below. Everything through the space before Nisi.
 
-2. Once it's visually selected, press `d` to delete it.
-
-3. Now press `gqip`{normal} to apply the reformat operator (`gq`) to the entire
+2. Now press `gqip`{normal} to apply the reformat operator (`gq`) to the entire
    paragraph (`ip`).
 
 Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim
@@ -934,7 +952,8 @@ officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat
 reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia
 voluptate. 
 
-✓ Answer:
+✓ What it should look like:
+
 Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum
 Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident.
 Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex
@@ -970,7 +989,7 @@ Voluptate laboris sint cupidatat ullamco ut ea
 consectetur et est culpa et
 culpa duis.
 
-✓ Answer:
+✓ What it should look like:
 Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim
 labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi
 anim cupidatat excepteur officia.
@@ -985,43 +1004,45 @@ eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim.
 Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et
 culpa duis.
 
+### Lesson 10.4: JOIN LINES TOGETHER IN VIM
+
+In Vim, you can join two lines together on one line with the join command. In
+our setup, this is the `Y`{normal} key.
+
+1. Move your cursor to the top line of the paragraph below.
+
+2. Press `Y`{normal} (that's a capital Y) to join the top two lines.
+
+3. Press `Y`{normal} again to join the third line. Alternatively, you can press
+   the dot command `.`{normal}.
+
+Learning Vim
+is
+fun!
+
+✓ What it should look like:
+
+Learning Vim is fun!
+
 ### Lesson 10 SUMMARY
 
 In this lesson we also learned the reformatting operator `gq`{normal}. It's
 very useful to reformat entire paragraphs with `gqip`{normal}. You can also
 visually select text and then press `gq`{normal} to reformat it.
 
-## CONCLUSION 1
-- should have most of what you need now to start being productive in Vim
-- tried to combine demonstrating vim's power with minimum nec to do real work
+We also learned how to join lines together with `Y`{normal}.
 
-- vim is *not* something you have "mastered" or not
-  - i've been using it for 12 years and learned new things writing this tutorial
-  - see r00k's article
+## Conclusion: PART 1
+At this point you *know* most of what you need now to start being productive in
+Vim.
 
-- if this is your first time seeing Vim or working through the tutorial , i'd
-  recommend using it, trying out + getting used to the commands we've talked
-  about above
+Will you be productive? Probably not right away, because Vim takes some getting
+used to. But it won't take long, and hopefully this tutorial gives you a
+glimpse into what makes Vim so powerful.
 
-- shouldn't take that long
+If you're new to Vim, it might be best to try it out with some real work in
+order to get more used to the fundamentals we've covered so far. It may be
+helpful to quit (`:q!`{normal}) and run through Lessons 1-10 a few times too.
 
-- if you've got most of that under your fingers, feel like learning more, or
-  want to learn more about power of vim you can continue
-
-- learning more:
-  - hopefully see how operators + motions are powerful
-    - there are more motions and more operators
-    - top end of file
-  - splits and multiple views in a file
-  - more on copying and pasting
-    - save stuff for later vs pasting last thing copied or deleted
-    - copy to/from outside Vim
-  - coding stuff
-    - syntax highlighting
-    - formatting/mistake checking/autocompletion with LSP
-  - searching within a document
-  - macros
-  - plugins
-  - hop navigation plugin
-  - making own note system/database
-
+Once you have what we covered so far under your fingers, you can continue on to
+Part 2.
