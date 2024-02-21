@@ -79,6 +79,8 @@ if [[ "$OS" == "Linux" ]] || [[ "$OS" == "Darwin" ]] ; then
       echo "zplug is already installed."
   fi
 
+  mkdir -p ~/notes
+  touch ~/notes/index.wiki
 
 else
     echo "This script is only supported on macOS and Linux."
