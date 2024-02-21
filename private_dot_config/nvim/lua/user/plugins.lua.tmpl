@@ -64,6 +64,9 @@ return packer.startup(function(use)
   use "ap/vim-buftabline"
   use "jpalardy/vim-slime"
 
+  use {"vimwiki/vimwiki", branch = "dev"}
+  use "zk-org/zk-nvim"
+
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end
