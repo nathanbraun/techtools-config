@@ -1,0 +1,7 @@
+---
+title: tmux
+date: 2024-02-21
+tags: [concept, tool]
+---
+
+- terminal "multiplexer"

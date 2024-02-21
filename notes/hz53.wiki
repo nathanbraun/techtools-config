@@ -1,0 +1,7 @@
+---
+title: vim
+date: 2024-02-21
+tags: [concept, tool]
+---
+
+- text editor
