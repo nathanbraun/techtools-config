@@ -20,56 +20,12 @@ keymap("n", "<leader>d", '"=strftime("%Y-%m-%d")<CR>p', opts)
 --   term_mode = "t",
 --   command_mode = "c",
 
-{{- if eq .chezmoi.os "darwin" }}
-
 -- vimwiki
 keymap("n", "<leader>wk", ":VimwikiDiaryPrevDay<CR>", opts)
 keymap("n", "<leader>wj", ":VimwikiDiaryNextDay<CR>", opts)
 
 -- links
-keymap("n", "<leader>lz", ":e ~/notes/zettelkasten.wiki<CR>", opts)
-
--- tech stuff
-keymap("n", "<leader>ldo", ":e ~/notes/210313-1347.wiki<CR>", opts)
-
--- writing 
-keymap("n", "<leader>lwr", ":e ~/notes/tzvs.wiki<CR>", opts)
-
--- week notes
-keymap("n", "<leader>lwe", ":e ~/notes/lks9.wiki<CR>", opts)
-
--- week checklist
-keymap("n", "<leader>lwc", ":e ~/notes/w74x.wiki<CR>", opts)
-
--- day checklist
-keymap("n", "<leader>ldc", ":e ~/notes/7i9q.wiki<CR>", opts)
-
--- books
-
--- kids
-keymap("n", "<leader>lki", ":e ~/notes/di63.wiki<CR>", opts)
-
--- habits
-keymap("n", "<leader>lha", ":e ~/notes/a84s.wiki<CR>", opts)
-
--- 1-2 pomodoro tasks
-keymap("n", "<leader>l1p", ":e ~/notes/ppqo.wiki<CR>", opts)
-
--- block tasks
-
--- reading list
-keymap("n", "<leader>lar", ":e ~/notes/rkh2.wiki<CR>", opts)
-
--- projects
-keymap("n", "<leader>lpr", ":e ~/notes/bul8.wiki<CR>", opts)
-
--- someday
-keymap("n", "<leader>lso", ":e ~/notes/30x0.wiki<CR>", opts)
-
--- learning
-keymap("n", "<leader>lle", ":e ~/notes/4syy.wiki<CR>", opts)
-
-{{- end }}
+keymap("n", "<leader>lz", ":e ~/notes/index.wiki<CR>", opts)
 
 
 -- Normal --
