@@ -37,6 +37,8 @@ function create_venv() {
     fi
 }
 
+create_venv
+
 {{if eq .chezmoi.os "darwin" -}}
 brew install reattach-to-user-namespace
 {{ end -}}
