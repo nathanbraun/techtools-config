@@ -176,7 +176,18 @@ alias cha="chezmoi apply"
 
 alias ssh='TERM=xterm-256color \ssh'
 
-{{if eq .chezmoi.os "linux" -}}
- export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-{{else if eq .chezmoi.os "darwin" -}}
-{{ end -}}
+# Function to add Homebrew's Python to PATH
+add_homebrew_to_path() {
+  # Get the Homebrew prefix
+  local brew_prefix="$(brew --prefix)"
+  
+  if [[ -n "$brew_prefix" && -d "$brew_prefix/bin" && ":$PATH:" != *":$brew_prefix/bin:"* ]]; then
+    # Prepend Homebrew bin to PATH
+    PATH="$brew_prefix/bin:$PATH"
+  fi
+
+  export PATH
+}
+
+# Call the function to update PATH
+add_homebrew_to_path
