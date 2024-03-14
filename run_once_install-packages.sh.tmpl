@@ -17,10 +17,26 @@ brew install zk
 brew install zig
 brew install python
 
-{{if eq .chezmoi.os "linux" -}}
-/home/linuxbrew/.linuxbrew/bin/python3 -m venv ~/.nvim-venv
-{{else if eq .chezmoi.os "darwin" -}}
-{{ end -}}
+function create_venv() {
+    local venv_dir=${1:-"~/.nvim-venv"}
+    
+    # Find the Homebrew installation directory
+    local brew_prefix=$(brew --prefix)
+    
+    # Construct the path to the Homebrew-installed python3 binary
+    local python_bin="${brew_prefix}/bin/python3"
+    
+    # Check if the Homebrew-installed python3 binary exists
+    if [[ -x "$python_bin" ]]; then
+        # Create a virtual environment using the python3 binary
+        $python_bin -m venv "$venv_dir"
+        echo "Virtual environment created at $venv_dir"
+    else
+        echo "Error: Homebrew-installed python3 not found."
+        return 1
+    fi
+}
+
 {{if eq .chezmoi.os "darwin" -}}
 brew install reattach-to-user-namespace
 {{ end -}}
