@@ -267,7 +267,7 @@ Human languages like English aren't random or something we just memorize. They
 have subjects, verbs and adjectives that we fit together in mostly predictable
 ways.
 
-It's the same with Vim. There are **actions**, or things we can do to text. For
+It's the same with Vim. There are **actions**, or things we can *do* to text. For
 example:
 - delete
 - copy
@@ -426,8 +426,8 @@ There is some text missing from this line.
 
 ## Lesson 5.2: I AND A
 
-In Normal mode, notice how the cursor is a "block", one character wide. As you
-move the cursor around, it completely covers one character.
+In Normal mode, you may have noticed how the cursor is a "block", one character
+wide. As you move the cursor around, it completely covers one character.
 
 `i`{normal} puts you in Insert mode to the *left* of that cursor block.
 
@@ -809,6 +809,8 @@ Two other powerful motions are *in* and *around*.
 It's easiest to show how they work with an example. Say we want to select the
 footnote in the line below.
 
+A predecessor to Vim[footnote: the vi editor] came out in 1976!
+
 1. Move the cursor somewhere inside the square brackets.
 
 2. Type `v`{normal} to enter Visual mode.
@@ -820,8 +822,6 @@ footnote in the line below.
 
 5. Now try it with `vi]`{normal}. This tells Vim to select "inside brackets",
    everything inside the brackets but *not* the brackets themselves.
-
-A predecessor to Vim[footnote: the vi editor] came out in 1976!
 
 ### Lesson 9.2: IN AND AROUND IN NORMAL MODE
 
@@ -883,7 +883,7 @@ lines than working with larger, multi paragraph edits.
 
 So for the next two lessons you can make your text edits, then I'll include the
 answer below (with a ✓) for you to compare. But your changes will no longer
-automatically update from ✗ to ✓, sorry.
+automatically update from ✗ to ✓. Sorry.
 
 ✓ What 9.3 will look like if it's right:
 
@@ -1026,9 +1026,9 @@ Learning Vim is fun!
 
 ### Lesson 10 SUMMARY
 
-In this lesson we also learned the reformatting operator `gq`{normal}. It's
-very useful to reformat entire paragraphs with `gqip`{normal}. You can also
-visually select text and then press `gq`{normal} to reformat it.
+In this lesson we learned the reformatting operator `gq`{normal}. It's very
+useful to reformat entire paragraphs with `gqip`{normal}. You can also visually
+select text and then press `gq`{normal} to reformat it.
 
 We also learned how to join lines together with `Y`{normal}.
 
