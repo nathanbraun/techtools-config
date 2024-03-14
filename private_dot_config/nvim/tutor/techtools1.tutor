@@ -68,7 +68,7 @@ To move the cursor, press the `h`, `j`, `k`, `l` keys as indicated.
 ### Lesson 2.2: MOVING THE CURSOR HORIZONTALLY
 
 It's very important to internalize the `h`, `j`, `k`, `l` keys as left, down,
-up, right and up. This will make you faster, both in Vim as well as (the many)
+up and right. This will make you faster, both in Vim as well as (the many)
 places with Vim-style keybindings (the shell, tmux, Gmail).
 
 But moving one line or character at a time can be slow. Here are some other
@@ -1045,4 +1045,4 @@ order to get more used to the fundamentals we've covered so far. It may be
 helpful to quit (`:q!`{normal}) and run through Lessons 1-10 a few times too.
 
 Once you have what we covered so far under your fingers, you can continue on to
-Part 2.
+Part 2 by running `:Tutor techtools2`.
