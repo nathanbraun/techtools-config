@@ -19,7 +19,3 @@ require("zk").setup({
     },
   },
 })
-
-local opts = { noremap=true, silent=false }
-vim.api.nvim_set_keymap("n", "<leader>zkf", "<Cmd>ZkNotes { sort = { 'modified' }, match = vim.fn.input('Search: ') }<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>zko", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>", opts)

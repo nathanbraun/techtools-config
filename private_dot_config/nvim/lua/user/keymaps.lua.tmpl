@@ -10,6 +10,20 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- hop
+keymap("n", "Y", "J", opts)
+keymap("n", "s", "<cmd>Pounce<CR>", opts)
+keymap("n", "S", "<cmd>PounceRepeat<CR>", opts)
+keymap("v", "s", "<cmd>Pounce<CR>", opts)
+keymap("n", "K", "<cmd>HopLineBC<CR>", opts)
+keymap("n", "J", "<cmd>HopLineAC<CR>", opts)
+keymap("n", "H", "<cmd>HopWordBC<CR>", opts)
+keymap("n", "L", "<cmd>HopWordAC<CR>", opts)
+keymap("v", "K", "<cmd>HopLineBC<CR>", opts)
+keymap("v", "J", "<cmd>HopLineAC<CR>", opts)
+keymap("v", "H", "<cmd>HopWordBC<CR>", opts)
+keymap("v", "L", "<cmd>HopWordAC<CR>", opts)
+
 keymap("n", "<leader>d", '"=strftime("%Y-%m-%d")<CR>p', opts)
 
 -- Modes
@@ -74,3 +88,9 @@ keymap("x", "<leader>s", "<Plug>SlimeRegionSend", {silent = true})
 
 keymap("n", "<leader>gg", ":LazyGit<CR>", opts)
 
+keymap("n", "<c-l>", "<cmd>TmuxNavigateRight<cr>", opts)
+keymap("n", "<c-h>", "<cmd>TmuxNavigateLeft<cr>", opts)
+keymap("n", "<c-j>", "<cmd>TmuxNavigatedown<cr>", opts)
+keymap("n", "<c-k>", "<cmd>TmuxNavigateUp<cr>", opts)
+
+keymap("n", "<leader>ai", "<cmd>AINewPersistentChat<cr>", opts)

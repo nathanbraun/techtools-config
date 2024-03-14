@@ -62,4 +62,19 @@ vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 -- vim.g.copilot_no_tab_map = true
 -- vim.api.nvim_set_keymap("i", "<C-N>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
+vim.cmd('source ~/.config/nvim/vim/vim-ai-persistent.vim')
+vim.g.aichat_yaml_header = "---\ntitle: Untitled\ndate: %date%\ntags: [aichat]\n---"
 
+vim.g.vim_ai_chat = {
+  options = {
+    model = "gpt-4-1106-preview",
+    initial_prompt = [[
+>>> system
+
+You are a general assistant.
+If you attach a code block add syntax type after ``` to enable syntax highlighting.
+
+The first time your respond as assistant, please give a very brief title (a few words) for the discussion in the format "Proposed Title: Your Title". Only do this once, don't do it if there's a proposed title earlier in the conversation.
+    ]]
+  }
+}
