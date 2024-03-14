@@ -175,3 +175,8 @@ alias cha="chezmoi apply"
 
 
 alias ssh='TERM=xterm-256color \ssh'
+
+{{if eq .chezmoi.os "linux" -}}
+ export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+{{else if eq .chezmoi.os "darwin" -}}
+{{ end -}}

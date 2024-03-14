@@ -14,7 +14,12 @@ brew install lsd
 brew install ghq
 brew install fzf
 brew install zk
+brew install python
 
+{{if eq .chezmoi.os "linux" -}}
+/home/linuxbrew/.linuxbrew/bin/python3 -m venv ~/.nvim-venv
+{{else if eq .chezmoi.os "darwin" -}}
+{{ end -}}
 {{if eq .chezmoi.os "darwin" -}}
 brew install reattach-to-user-namespace
 {{ end -}}

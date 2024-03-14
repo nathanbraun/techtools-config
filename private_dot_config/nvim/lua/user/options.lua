@@ -47,8 +47,8 @@ vim.g.vimwiki_list = {{path = '~/notes', syntax = 'markdown', diary_rel_path = '
 vim.g.slime_python_ipython = 1
 vim.g.slime_target = "tmux"
 vim.g.slime_dont_ask_default = 1
-vim.g.python3_host_prog = "/Users/nathanbraun/neovim-python/bin/python" 
-vim.g.python_host_prog = "/Users/nathanbraun/neovim-python2/bin/python"
+vim.g.python3_host_prog = "~/.nvim-venv/bin/python" 
+-- vim.g.python_host_prog = "/Users/nathanbraun/neovim-python2/bin/python"
 vim.g.zettel_default_mappings = 0
 -- vim.g.zettel_options = {{template = "~/vimwiki/templates/template.tpl", disable_front_matter = 1}}
 vim.wo.colorcolumn = "81"
