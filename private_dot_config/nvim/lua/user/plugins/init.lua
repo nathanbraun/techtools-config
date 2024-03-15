@@ -31,14 +31,10 @@ return {{
   'jbyuki/nabla.nvim',
 
   -- LSP
-  -- Mason for managing LSP servers, formatters, etc.
-  {
-    'williamboman/mason.nvim',
-    dependencies = {
-      'williamboman/mason-lspconfig.nvim',
-      'neovim/nvim-lspconfig',
-    },
-  },
+  'VonHeikemen/lsp-zero.nvim',
+  'williamboman/mason.nvim',
+  "williamboman/mason-lspconfig.nvim",
+  "neovim/nvim-lspconfig",
 
   -- cmp plugins 
   "hrsh7th/nvim-cmp",  -- The completion plugin
@@ -48,7 +44,7 @@ return {{
    "hrsh7th/cmp-cmdline", -- cmdline completions
   -- use "saadparwaiz1/cmp_luasnip" -- snippet completions
    "dcampos/cmp-snippy",  -- snippet completions
-   "hrsh7th/cmp-nvim-lsp", 
+   "hrsh7th/cmp-nvim-lsp",
    "hrsh7th/cmp-nvim-lua",
    "hrsh7th/cmp-calc",
 
