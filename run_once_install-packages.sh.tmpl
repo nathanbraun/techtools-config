@@ -19,7 +19,7 @@ brew install python
 brew install node
 
 function create_venv() {
-    local venv_dir=${1:-"~/.nvim-venv"}
+    local venv_dir=${1:-"$HOME/.nvim-venv"}
     
     # Find the Homebrew installation directory
     local brew_prefix=$(brew --prefix)
