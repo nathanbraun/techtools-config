@@ -170,11 +170,15 @@ alias ipython="python -c 'import IPython; IPython.terminal.ipapp.launch_new_inst
 # alias dash='noti pomodoro --simple 5'
 
 alias gg="lazygit"
-alias ch="chezmoi cd"
+alias chd='cd "$(chezmoi source-path)"'
 alias cha="chezmoi apply"
 
-
 alias ssh='TERM=xterm-256color \ssh'
+
+setopt INC_APPEND_HISTORY
+
+export NOTES_DIR="$HOME/notes"
+export ZK_NOTEBOOK_DIR="$NOTES_DIR/.zk"
 
 # Function to add Homebrew's Python to PATH
 add_homebrew_to_path() {
