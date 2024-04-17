@@ -1,49 +1,20 @@
-{{if eq .chezmoi.os "linux" -}}
 #!/usr/bin/bash
-{{else if eq .chezmoi.os "darwin" -}}
-#!/bin/bash
-{{ end -}}
 
-brew install zsh
-brew install bat
-brew install bc
-brew install nvim
-brew install lazygit
-brew install tmux
-brew install lsd
-brew install ghq
-brew install fzf
-brew install zk
-brew install zig
-brew install python
-brew install node
+sudo apt update
+sudo apt install -y zsh bat bc fasd tmux lsd fzf
+sudo snap install nvim --classic
 
-function create_venv() {
-    local venv_dir=${1:-"$HOME/.nvim-venv"}
-    
-    # Find the Homebrew installation directory
-    local brew_prefix=$(brew --prefix)
-    
-    # Construct the path to the Homebrew-installed python3 binary
-    local python_bin="${brew_prefix}/bin/python3"
-    
-    # Check if the Homebrew-installed python3 binary exists
-    if [[ -x "$python_bin" ]]; then
-        # Create a virtual environment using the python3 binary
-        $python_bin -m venv "$venv_dir"
-        echo "Virtual environment created at $venv_dir"
-    else
-        echo "Error: Homebrew-installed python3 not found."
-        return 1
-    fi
-}
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit /usr/local/bin
 
-create_venv
+GO_VERSION=$(curl -s "https://go.dev/VERSION?m=text" | head -1)
+wget "https://dl.google.com/go/${GO_VERSION}.linux-amd64.tar.gz"
+sudo tar -C /usr/local -xzf "${GO_VERSION}.linux-amd64.tar.gz"
+rm "${GO_VERSION}.linux-amd64.tar.gz"
 
-{{if eq .chezmoi.os "darwin" -}}
-brew install reattach-to-user-namespace
-{{ end -}}
-
+go install github.com/x-motemen/ghq@latest
 
 #--------------------------------------------------
 # Shell Configurations
