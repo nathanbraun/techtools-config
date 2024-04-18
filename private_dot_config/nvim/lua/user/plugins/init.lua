@@ -16,17 +16,6 @@ return {{
   },
   "JoosepAlviste/nvim-ts-context-commentstring",
 
-  -- vimwiki
-  {"vimwiki/vimwiki", branch = "dev"},
-
-  -- zk
-  "zk-org/zk-nvim",
-
-  { "nathanbraun/vim-rainbow-lists", ft = "vimwiki" },
-
-  -- chat gpt
-  { "nathanbraun/vim-ai" },
-
   -- math
   'jbyuki/nabla.nvim',
 
