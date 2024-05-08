@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Determine the user's home directory
+USER_HOME=$(eval echo ~${SUDO_USER})
+
+# Specify the path to the virtual environment relative to the user's home directory
+VENV_PATH="$USER_HOME/code/github.com/nathanbraun/techtools-pomodoro-api/venv/bin/python"
+
+# Specify the path to your Python script
+SCRIPT_PATH="$USER_HOME/code/github.com/nathanbraun/techtools-pomodoro-api/pomo.py"
+
+# Check if SCRIPT_PATH exists
+if [ ! -f "$SCRIPT_PATH" ]; then
+    echo "Error: $SCRIPT_PATH not found - make sure you got the techtools-pomodoro-api repo"
+    exit 1
+fi
+
+# Check if VENV_PATH exists
+if [ ! -f "$VENV_PATH" ]; then
+    echo "Error: Virtual environment not found - make sure you run pip install -r requirements.txt in the techtools-pomodoro-api repo "
+    exit 1
+fi
+
+# Execute the script with the virtual environment's Python interpreter
+$VENV_PATH $SCRIPT_PATH "$@"
+
