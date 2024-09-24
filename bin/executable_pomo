@@ -17,7 +17,7 @@ fi
 
 # Check if VENV_PATH exists
 if [ ! -f "$VENV_PATH" ]; then
-    echo "Error: Virtual environment not found - make sure you run pip install -r requirements.txt in the techtools-pomodoro-api repo "
+    echo "Error: Virtual environment not found - make sure you've made the venv and installed requirements.txt in the techtools-pomodoro-api repo "
     exit 1
 fi
 

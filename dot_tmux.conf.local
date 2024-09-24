@@ -463,7 +463,7 @@ unbind s
 bind-key s run-shell -b "~/.tmux/tmux-switch-session.sh"
 
 unbind k
-bind-key k run-shell -b "~/.tmux/tmux-kill-session.sh"
+bind-key k run-shell -b "~/.tmux/tmux-kill-and-switch.sh"
 
 unbind j
 bind-key j run-shell -b "~/.tmux/tmux-jump.sh"
