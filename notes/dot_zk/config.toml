@@ -1,5 +1,5 @@
 # zk configuration file
-#
+private_dot_config/nvim/llua#
 # Uncomment the properties you want to customize.
 
 # NOTE SETTINGS
@@ -74,6 +74,15 @@ template = "default.md"
 #filename = "{{date now}}"
 #[group."<NAME>".extra]
 #key = "value"
+[group.daily.note]
+filename = "{{title}}"
+extension = "wiki"
+template = "daily.md"
+
+[group.weekly.note]
+filename = "{{title}}"
+extension = "wiki"
+template = "weekly.md"
 
 
 # MARKDOWN SETTINGS
