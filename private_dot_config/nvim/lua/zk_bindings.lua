@@ -39,8 +39,8 @@ function M.setup()
   vim.keymap.set("n", "<leader>znr", '<Cmd>ZkNew { template = "reference.md"}<CR>', opts)
   vim.keymap.set("n", "<leader>znq", '<Cmd>ZkNew { template = "quote.md"}<CR>', opts)
   vim.keymap.set("n", "<leader>znb", '<Cmd>ZkNew { template = "book.md"}<CR>', opts)
-  vim.keymap.set("n", "<leader>znd", '<Cmd>ZkNew { template = "daily.md"}<CR>' , opts)
-  vim.keymap.set("n", "<leader>znw", '<Cmd>ZkNew { template = "weekly.md"}<CR>', opts)
+  vim.keymap.set('n', '<leader>znd', function() helpers.zkDayNoteOffset(1) end, opts)
+  vim.keymap.set('n', '<leader>znw', function() helpers.zkWeekNoteOffset(1) end, opts)
   
 
   commands.add("ZkYankName", function(options) helpers.yankName(options, { title = "Zk Yank" }) end)
