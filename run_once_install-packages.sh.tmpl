@@ -34,6 +34,10 @@ function create_venv() {
         # Create a virtual environment using the python3 binary
         $python_bin -m venv "$venv_dir"
         echo "Virtual environment created at $venv_dir"
+
+        # install pynvim to the virtual environment
+        $venv_dir/bin/pip install pynvim
+        echo "pynvim installed to virtual environment"
     else
         echo "Error: Homebrew-installed python3 not found."
         return 1
