@@ -38,7 +38,25 @@ function! g:vim_ai_mod.CreatePersistentChat()
 
   " Now set the filetype to trigger any filetype plugins
   setlocal filetype=aichat
+  
+  " Position cursor after the header
+  " execute 'normal! 7G'
+endfunction
+
+function! g:vim_ai_mod.CreatePersistentChat()
+  let l:filename = RandomFilename()
+  let l:fullpath = g:vim_ai_mod['chat_files_path'] . l:filename
+
+  " Create a new buffer for the .aichat file
+  execute 'e ' . l:fullpath
+
+  " Now set the filetype to trigger any filetype plugins
+  setlocal filetype=aichat
   call vim_ai#AIChatRun(0, {})
 endfunction
-command! AINewPersistentChat call vim_ai#AINewChatRun('persistent')
+
+command! AINewPersistentChat call g:vim_ai_mod.CreatePersistentChat()
+
+" command! AINewPersistentChat call vim_ai#AINewChatRun('persistent')
+" command! -nargs=1 AINewPersistentChatCustom call vim_ai#AINewCustomChatRun('persistent', <args>)
 
