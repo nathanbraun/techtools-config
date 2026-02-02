@@ -1,197 +1,168 @@
 {{ if eq .chezmoi.os "linux" }}
-export PATH="$PATH:$HOME/bin"
-export PATH="$PATH:$HOME/.fzf/bin"
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-if [ -z "$TMUX" ]; then
-  export TMUX_CONF="$HOME/.tmux.conf"
-  username=$(basename $HOME)
+# Linux-specific PATH setup
+export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.fzf/bin"
+[ -d "/home/linuxbrew/.linuxbrew/bin" ] && export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 
+{{ else if eq .chezmoi.os "darwin" }}
+# macOS-specific PATH setup
+export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.fzf/bin"
+[ -d "/opt/homebrew/bin" ] && export PATH="/opt/homebrew/bin:$PATH"
+{{ end }}
+
+# Auto-start tmux only in interactive shells
+if [[ $- == *i* ]] && [ -z "$TMUX" ] && [ -z "$INSIDE_EMACS" ] && [ -z "$VSCODE_INJECTION" ]; then
+  username=$(basename "$HOME")
+  
   if command -v tmux >/dev/null 2>&1; then
-    exec env TMUX_TMPDIR=/tmp tmux -u2 -f "$TMUX_CONF" new-session -As "$username" -c "$HOME"
+    # Check if session exists
+    if tmux has-session -t "$username" 2>/dev/null; then
+      exec tmux attach-session -t "$username"
+    else
+      exec tmux new-session -s "$username" -c "$HOME"
+    fi
   else
-    echo "tmux not found. Please install it via Homebrew or another package manager."
+    echo "Warning: tmux not found. Install it with: brew install tmux (macOS) or apt install tmux (Linux)"
   fi
 fi
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# Enable Powerlevel10k instant prompt (optional - for faster startup)
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Source Prezto
+# Source Prezto if installed
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Init zplug
-if [[ ! -d ~/.zplug ]];then
+# Initialize zplug (plugin manager)
+if [[ ! -d ~/.zplug ]]; then
+    echo "Installing zplug..."
     curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
-source ~/.zplug/init.zsh
 
-# Select zplug plugins
-zplug "agkozak/zsh-z"
-zplug "junegunn/fzf"
-zplug "yuhonas/zsh-aliases-lsd"
-zplug "romkatv/powerlevel10k", as:theme, depth:1
+if [[ -s ~/.zplug/init.zsh ]]; then
+  source ~/.zplug/init.zsh
 
-# Make sure that plugins are installed
-if ! zplug check --verbose; then
-    printf "Installing missing zplug plugins...\n"
-    zplug install
-fi
+  # Essential plugins
+  zplug "agkozak/zsh-z"                    # Jump to frecent directories
+  zplug "junegunn/fzf"                     # Fuzzy finder
+  zplug "romkatv/powerlevel10k", as:theme, depth:1  # Theme
 
-# Load Zplug plugins
-zplug load
-
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-{{else if eq .chezmoi.os "darwin" -}}
-export PATH="$PATH:$HOME/bin"
-export PATH="$PATH:$HOME/.fzf/bin"
-export PATH="/opt/homebrew/bin:$PATH"
-if [ -z "$TMUX" ]
-then
-  export TMUX_CONF="$HOME/.tmux.conf"
-  username=$(basename $HOME)
-  if command -v tmux >/dev/null 2>&1; then
-    exec env TMUX_TMPDIR=/tmp tmux -u2 -f "$TMUX_CONF" new-session -As "$username" -c "$HOME"
-  else
-    echo "tmux not found. Please install it via Homebrew or another package manager."
+  # Install plugins if not installed
+  if ! zplug check --verbose; then
+      printf "Installing missing zplug plugins...\n"
+      zplug install
   fi
+
+  # Load plugins
+  zplug load
 fi
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# Source Prezto
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
-# Init zplug
-if [[ ! -d ~/.zplug ]];then
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-fi
-source ~/.zplug/init.zsh
-
-# Select zplug plugins
-zplug "agkozak/zsh-z"
-zplug "junegunn/fzf"
-zplug "yuhonas/zsh-aliases-lsd"
-zplug "romkatv/powerlevel10k", as:theme, depth:1
-
-# Make sure that plugins are installed
-if ! zplug check --verbose; then
-    printf "Installing missing zplug plugins...\n"
-    zplug install
-fi
-
-# Load Zplug plugins
-zplug load
-
+# Load p10k config if it exists
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-{{end -}}
+# Editor settings
+export EDITOR='vim'
+export VISUAL='vim'
+command -v nvim >/dev/null 2>&1 && export EDITOR='nvim' && export VISUAL='nvim'
 
-tmux_jump() {
-    # starting in ~/code...
-    BASE="$HOME/code/github.com"
-    # ... look for directories exactly two levels deep (`~/code/owner/project`)
-    # and match them with fzf. In this case we break ties by favoring matches
-    # on the project name instead of the owner name (implementaion means
-    # favoring matches closer to the end of the string.) This is simplified a
-    # little bit with the `--select-1 --query="$1"` line: if there's only one
-    # match for the argument passed in as the first argument to this function,
-    # we select immediately instead of asking for an interactive selection.
-    SELECTED=$(find "$BASE" -mindepth 2 -maxdepth 2 -type d | sed "s|$BASE/||g" | fzf --tiebreak=end --select-1 --query="$1")
-
-    # fzf will exit with a non-zero code if you ctrl-c or ctrl-g out of
-    # it. We use this as a signal that we don't want to jump after all.
-    if [[ "$?" != 0 ]]; then echo "cancelling!"; return 1; fi
-
-    # call tmux-session on the *full* path to the matched project!
-    tmux-session "$BASE/$SELECTED"
-}
-
-# and alias this so I can just do `t bytes.zone` instead of having to type
-# tmux_jump every time.
-alias tj=tmux_jump
-alias ts=tmux-session
+# Python debugger
 export PYTHONBREAKPOINT="IPython.embed"
 
-################################################################################
-# put in vi mode:
-################################################################################
+# Vi mode in shell
 bindkey -v
-export EDITOR='nvim'
-export VISUAL='nvim'
-
-# add kj and jk to insert mode
-bindkey -M viins 'kj' vi-cmd-mode
-bindkey -M viins 'jk' vi-cmd-mode
-
+bindkey -M viins 'jk' vi-cmd-mode  # jk to exit insert mode
+bindkey -M viins 'kj' vi-cmd-mode  # kj to exit insert mode
 bindkey '^p' history-beginning-search-backward
 bindkey '^n' history-beginning-search-forward
 
-# Change cursor shape for different vi modes.
+# Change cursor shape for vi modes
 function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
+  if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'  # Block cursor
+  elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'  # Beam cursor
   fi
 }
+zle -N zle-keymap-select
 
-if [ -f ~/.zshrc_local ]; then
-    source ~/.zshrc_local
+# History settings
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+setopt INC_APPEND_HISTORY        # Write immediately
+setopt SHARE_HISTORY             # Share between sessions
+setopt HIST_IGNORE_DUPS          # Don't record duplicates
+setopt HIST_FIND_NO_DUPS         # Don't show duplicates in search
+setopt HIST_IGNORE_SPACE         # Don't record commands starting with space
+
+# FZF settings (if installed)
+if command -v fzf >/dev/null 2>&1; then
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+  
+  export FZF_DEFAULT_OPTS="
+    --height 40%
+    --layout=reverse
+    --border
+    --inline-info
+  "
+  
+  # Use fd instead of find if available
+  if command -v fd >/dev/null 2>&1; then
+    export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+  fi
 fi
 
-if [ -f ~/.profile ]; then
-    source ~/.profile
+# Tmux session jumping (requires tmux-session script)
+tmux_jump() {
+    local BASE="$HOME/code/github.com"
+    
+    if [ ! -d "$BASE" ]; then
+        echo "Error: $BASE directory not found"
+        return 1
+    fi
+    
+    local SELECTED=$(find "$BASE" -mindepth 2 -maxdepth 2 -type d 2>/dev/null | 
+                     sed "s|$BASE/||g" | 
+                     fzf --tiebreak=end --select-1 --query="$1")
+    
+    if [[ $? != 0 ]] || [[ -z "$SELECTED" ]]; then
+        echo "Cancelled"
+        return 1
+    fi
+    
+    if command -v tmux-session >/dev/null 2>&1; then
+        tmux-session "$BASE/$SELECTED"
+    else
+        echo "Error: tmux-session command not found"
+        return 1
+    fi
+}
+
+# Aliases
+alias tj='tmux_jump'
+alias ts='tmux-session'
+alias gg='lazygit'
+alias vim='nvim'
+command -v nvim >/dev/null 2>&1 || alias vim='vim'
+
+# SSH with proper terminal
+alias ssh='TERM=xterm-256color ssh'
+
+# Chezmoi shortcuts (if installed)
+if command -v chezmoi >/dev/null 2>&1; then
+  alias chd='cd "$(chezmoi source-path)"'
+  alias cha='chezmoi apply'
 fi
 
+# IPython shortcut
 alias ipython="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Load local customizations if they exist
+[ -f ~/.zshrc_local ] && source ~/.zshrc_local
+[ -f ~/.profile ] && source ~/.profile
 
-# aliases
-# alias pomo='noti pomodoro --simple'
-# alias dash='noti pomodoro --simple 5'
-
-alias gg="lazygit"
-alias chd='cd "$(chezmoi source-path)"'
-alias cha="chezmoi apply"
-
-alias ssh='TERM=xterm-256color \ssh'
-
-setopt INC_APPEND_HISTORY
-
+# Notes directory (if using zk or similar)
 export NOTES_DIR="$HOME/notes"
 export ZK_NOTEBOOK_DIR="$NOTES_DIR/.zk"
-
-# Function to add Homebrew's Python to PATH
-add_homebrew_to_path() {
-  # Get the Homebrew prefix
-  local brew_prefix="$(brew --prefix)"
-  
-  if [[ -n "$brew_prefix" && -d "$brew_prefix/bin" && ":$PATH:" != *":$brew_prefix/bin:"* ]]; then
-    # Prepend Homebrew bin to PATH
-    PATH="$brew_prefix/bin:$PATH"
-  fi
-
-  export PATH
-}
-
-# Call the function to update PATH
-add_homebrew_to_path
