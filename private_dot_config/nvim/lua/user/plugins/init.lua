@@ -24,8 +24,15 @@ return {{
 
   { "nathanbraun/vim-rainbow-lists", ft = "vimwiki" },
 
-  -- chat gpt
-  { "nathanbraun/vim-ai" },
+  -- ai chat
+  { "nathanbraun/nvim-ai",
+    config = function()
+      require('nai').setup({
+        active_provider = "claude_proxy",
+        active_model = "sonnet",
+      })
+    end
+  },
 
   -- math
   'jbyuki/nabla.nvim',
