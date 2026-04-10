@@ -83,6 +83,17 @@ if [[ "$OS" == "Linux" ]] || [[ "$OS" == "Darwin" ]] ; then
     #     echo -e "\n--> Backing up the current .zshrc config to .zshrc_backup-date"
     # fi
 
+    # Install Nerd Fonts (Linux only — on macOS use Homebrew cask)
+    if [[ "$OS" == "Linux" ]] && [ ! -d "$HOME/.local/share/fonts/CascadiaCode" ]; then
+        echo "Installing CascadiaCode Nerd Font..."
+        wget -q https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaCode.zip -O /tmp/CascadiaCode.zip
+        mkdir -p ~/.local/share/fonts
+        unzip -o /tmp/CascadiaCode.zip -d ~/.local/share/fonts/CascadiaCode
+        fc-cache -fv
+        rm /tmp/CascadiaCode.zip
+        echo "CascadiaCode Nerd Font installed."
+    fi
+
     # Install Prezto
     if [ ! -d "${ZDOTDIR:-$HOME}/.zprezto" ]; then
         git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
