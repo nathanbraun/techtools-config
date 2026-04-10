@@ -67,7 +67,7 @@ vim.g.aichat_yaml_header = "---\ntitle: Untitled\ndate: %date%\ntags: [aichat]\n
 
 vim.g.vim_ai_chat = {
   options = {
-    model = "gpt-4-1106-preview",
+    model = "gpt-4o",
     initial_prompt = [[
 >>> system
 

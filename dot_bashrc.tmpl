@@ -1,0 +1,6 @@
+{{ if eq .chezmoi.os "linux" -}}
+# Switch to zsh on ChromeOS (Crostini), where chsh doesn't work
+if [ -t 1 ] && [ -f /dev/.cros_milestone ] && [ -x "$(command -v zsh)" ]; then
+  exec zsh
+fi
+{{ end -}}
