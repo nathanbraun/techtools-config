@@ -30,6 +30,8 @@ return {{
       require('nai').setup({
         active_provider = "claude_proxy",
         active_model = "sonnet",
+        directory = vim.fn.expand("~/notes"),
+        format = "{id}.wiki"
       })
     end
   },
