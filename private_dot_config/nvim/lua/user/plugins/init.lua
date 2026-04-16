@@ -1,4 +1,4 @@
-return {{
+return { {
 
   -- My plugins here
   "nvim-lua/popup.nvim",
@@ -17,7 +17,7 @@ return {{
   "JoosepAlviste/nvim-ts-context-commentstring",
 
   -- vimwiki
-  {"vimwiki/vimwiki", branch = "dev"},
+  { "vimwiki/vimwiki",               branch = "dev" },
 
   -- zk
   "zk-org/zk-nvim",
@@ -25,13 +25,16 @@ return {{
   { "nathanbraun/vim-rainbow-lists", ft = "vimwiki" },
 
   -- ai chat
-  { "nathanbraun/nvim-ai",
+  {
+    "nathanbraun/nvim-ai",
     config = function()
       require('nai').setup({
         active_provider = "claude_proxy",
         active_model = "sonnet",
-        directory = vim.fn.expand("~/notes"),
-        format = "{id}.wiki"
+        chat_files = {
+          directory = "~/notes",
+          format = "{id}.wiki"
+        }
       })
     end
   },
@@ -45,17 +48,17 @@ return {{
   "williamboman/mason-lspconfig.nvim",
   "neovim/nvim-lspconfig",
 
-  -- cmp plugins 
-  "hrsh7th/nvim-cmp",  -- The completion plugin
+  -- cmp plugins
+  "hrsh7th/nvim-cmp",     -- The completion plugin
 
-   "hrsh7th/cmp-buffer",  -- buffer completions
-   "hrsh7th/cmp-path",  -- path completions
-   "hrsh7th/cmp-cmdline", -- cmdline completions
+  "hrsh7th/cmp-buffer",   -- buffer completions
+  "hrsh7th/cmp-path",     -- path completions
+  "hrsh7th/cmp-cmdline",  -- cmdline completions
   -- use "saadparwaiz1/cmp_luasnip" -- snippet completions
-   "dcampos/cmp-snippy",  -- snippet completions
-   "hrsh7th/cmp-nvim-lsp",
-   "hrsh7th/cmp-nvim-lua",
-   "hrsh7th/cmp-calc",
+  "dcampos/cmp-snippy",   -- snippet completions
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-nvim-lua",
+  "hrsh7th/cmp-calc",
 
   -- snippets
   -- use "L3MON4D3/LuaSnip" --snippet engine
@@ -85,7 +88,7 @@ return {{
     "kdheepak/lazygit.nvim",
     -- optional for floating window border decoration
     dependencies = {
-        "nvim-lua/plenary.nvim",
+      "nvim-lua/plenary.nvim",
     },
   },
   "tpope/vim-surround",
@@ -105,10 +108,10 @@ return {{
       "TmuxNavigatePrevious",
     },
     keys = {
-      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
@@ -116,9 +119,10 @@ return {{
   "kana/vim-arpeggio",
   "ap/vim-buftabline",
   "mattn/calendar-vim",
-  { "rlane/pounce.nvim",
+  {
+    "rlane/pounce.nvim",
     config = function()
-      require'pounce'.setup { accept_keys = "JKNPHLIUOMSDAFGVRBYTCEXWQZ" }
+      require 'pounce'.setup { accept_keys = "JKNPHLIUOMSDAFGVRBYTCEXWQZ" }
     end
   },
   {
@@ -127,10 +131,9 @@ return {{
     -- branch = 'v1', -- optional but strongly recommended
     config = function()
       -- you can configure Hop the way you like here; see :h hop-config
-      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+      require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end
   },
   "airblade/vim-rooter"
   -- "notjedi/nvim-rooter.lua",
-}}
-
+} }
