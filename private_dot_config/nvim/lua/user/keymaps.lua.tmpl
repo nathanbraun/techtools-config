@@ -78,9 +78,6 @@ keymap("n", "/", "q/i", opts)
 -- keymap("v", ">", ">gv", opts)
 
 -- j and k escape in insert mode
-local ok, result = pcall(
-  vim.cmd,
-  [[call arpeggio#map('i', '', 0, 'jk', '<Esc>')]])
 
 keymap("n", "<leader>s", "<Plug>SlimeMotionSend", {silent = true})
 keymap("n", "<leader>ss", "<Plug>SlimeLineSend", {silent = true})
