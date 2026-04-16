@@ -49,13 +49,13 @@ return { {
   "neovim/nvim-lspconfig",
 
   -- cmp plugins
-  "hrsh7th/nvim-cmp",     -- The completion plugin
+  "hrsh7th/nvim-cmp",    -- The completion plugin
 
-  "hrsh7th/cmp-buffer",   -- buffer completions
-  "hrsh7th/cmp-path",     -- path completions
-  "hrsh7th/cmp-cmdline",  -- cmdline completions
+  "hrsh7th/cmp-buffer",  -- buffer completions
+  "hrsh7th/cmp-path",    -- path completions
+  "hrsh7th/cmp-cmdline", -- cmdline completions
   -- use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  "dcampos/cmp-snippy",   -- snippet completions
+  "dcampos/cmp-snippy",  -- snippet completions
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-nvim-lua",
   "hrsh7th/cmp-calc",
@@ -120,7 +120,52 @@ return { {
   {
     "max397574/better-escape.nvim",
     config = function()
-      require("better_escape").setup()
+      require("better_escape").setup({
+        default_mappings = false, -- setting this to false removes all the default mappings
+        mappings = {
+          -- i for insert
+          i = {
+            j = {
+              k = "<Esc>",
+            },
+            k = {
+              j = "<Esc>",
+            },
+          },
+          c = {
+            j = {
+              k = "<C-c>",
+            },
+            k = {
+              j = "<C-c>",
+            },
+          },
+          t = {
+            j = {
+              k = "<C-\\><C-n>",
+            },
+            k = {
+              j = "<C-\\><C-n>",
+            },
+          },
+          v = {
+            j = {
+              k = "<Esc>",
+            },
+            k = {
+              j = "<Esc>",
+            },
+          },
+          s = {
+            j = {
+              k = "<Esc>",
+            },
+            k = {
+              j = "<Esc>",
+            },
+          },
+        },
+      })
     end,
   },
   "ap/vim-buftabline",
