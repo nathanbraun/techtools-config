@@ -116,7 +116,13 @@ return { {
     },
   },
   "tpope/vim-unimpaired",
-  "kana/vim-arpeggio",
+  -- "kana/vim-arpeggio",
+  {
+    "max397574/better-escape.nvim",
+    config = function()
+      require("better_escape").setup()
+    end,
+  },
   "ap/vim-buftabline",
   "mattn/calendar-vim",
   {
