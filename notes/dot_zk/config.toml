@@ -18,7 +18,7 @@
 #filename = "{{id}}"
 
 # The file extension used for the notes.
-extension = "wiki"
+extension = "md"
 
 # Template used to generate a note's content.
 # If not an absolute path, it is relative to .zk/templates/
@@ -76,12 +76,12 @@ template = "default.md"
 #key = "value"
 [group.daily.note]
 filename = "{{title}}"
-extension = "wiki"
+extension = "md"
 template = "daily.md"
 
 [group.weekly.note]
 filename = "{{title}}"
-extension = "wiki"
+extension = "md"
 template = "weekly.md"
 
 

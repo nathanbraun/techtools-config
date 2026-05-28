@@ -42,8 +42,6 @@ for k, v in pairs(options) do
 end
 
 vim.g.buftabline_numbers = 1
-vim.g.rblist_levels = 8
-vim.g.vimwiki_list = {{path = '~/notes', syntax = 'markdown', diary_rel_path = ''}}
 vim.g.slime_python_ipython = 1
 vim.g.slime_target = "tmux"
 vim.g.slime_dont_ask_default = 1

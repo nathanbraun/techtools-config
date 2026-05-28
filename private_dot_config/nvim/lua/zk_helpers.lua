@@ -206,13 +206,13 @@ function helpers.zkWeekNoteOffset(offset)
     -- Get the filename of the current buffer
     local current_file = vim.fn.expand('%:t')
 
-    -- Check if the file matches the format YYYY-WW.wiki
-    if not string.match(current_file, "^%d%d%d%d%-%d%d%.wiki$") then
+    -- Check if the file matches the format YYYY-WW.md
+    if not string.match(current_file, "^%d%d%d%d%-%d%d%.md$") then
       helpers.zkWeekNote()
       return
     end
 
-    local title = string.sub(current_file, 1, -6)  -- Remove the .wiki extension
+    local title = string.sub(current_file, 1, -4)  -- Remove the .md extension
     local next_week = getWeekOffset(title, offset)
 
     local first_dow = getMondayDateFromYearWeek(next_week)
@@ -239,13 +239,13 @@ function helpers.zkDayNoteOffset(offset)
     -- Get the filename of the current buffer
     local current_file = vim.fn.expand('%:t')
 
-    -- Check if the file matches the format YYYY-WW.wiki
-    if not string.match(current_file, "^%d%d%d%d%-%d%d%-%d%d%.wiki$") then
+    -- Check if the file matches the format YYYY-MM-DD.md
+    if not string.match(current_file, "^%d%d%d%d%-%d%d%-%d%d%.md$") then
       helpers.zkDayNote()
       return
     end
 
-    local title = string.sub(current_file, 1, -6)  -- Remove the .wiki extension
+    local title = string.sub(current_file, 1, -4)  -- Remove the .md extension
     local day_string = getDayOffset(title, offset)
     local day_date = stringToDate(day_string)
 
@@ -276,9 +276,9 @@ function helpers.CreateMarkdownLinkFromWiki()
         path_prefix = path_prefix .. '/'
     end
     
-    -- Remove the path prefix and the ".wiki" extension to get the relative path
+    -- Remove the path prefix and the ".md" extension to get the relative path
     path = path:gsub("^" .. path_prefix, "")
-    path = path:gsub("%.wiki$", "")
+    path = path:gsub("%.md$", "")
     
     -- Use the file name without the extension as the link text if the title is not found
     if title == "" then

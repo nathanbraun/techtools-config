@@ -16,13 +16,68 @@ return { {
   },
   "JoosepAlviste/nvim-ts-context-commentstring",
 
-  -- vimwiki
-  { "vimwiki/vimwiki",               branch = "dev" },
+  -- mkdnflow
+  {
+    "jakewvincent/mkdnflow.nvim",
+    ft = "markdown",
+    config = function()
+      local notes_dir = vim.fn.expand("~/notes/")
+      require("mkdnflow").setup({
+        filetypes = { markdown = true, rmd = true },
+        links = { implicit_extension = "md", conceal = true },
+        mappings = {
+          MkdnTableNextCell = false,
+          MkdnTablePrevCell = false,
+          MkdnIncreaseHeading = { "n", "-" },
+          MkdnDecreaseHeading = { "n", "+" },
+        },
+        to_do = {
+          -- skip the in_progress "[-]" step; toggle cycles [ ] <-> [X]
+          status_order = { "not_started", "complete" },
+        },
+        on_attach = function(bufnr)
+          local path = vim.api.nvim_buf_get_name(bufnr)
+          if vim.startswith(path, notes_dir) then
+            vim.wo.conceallevel = 2
+          end
+        end,
+      })
+    end,
+  },
+
+  -- render-markdown
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown" },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    opts = {
+      bullet = {
+        enabled = false, -- keep the literal -/*/+ chars
+      },
+      checkbox = {
+        enabled = false, -- keep the literal [ ] / [x] chars
+      },
+      heading = {
+        backgrounds = {}, -- keep the per-level foreground colors, drop the colored bg blocks
+        icons = {},       -- no numbered/bullet prefix on headings
+      },
+      link = {
+        enabled = false, -- skip the icon prefix on links
+      },
+      sign = {
+        enabled = false, -- no gutter signs (heading markers in the sign column)
+      },
+      quote = {
+        enabled = false, -- keep the literal `>` char, no styled bar fill
+      },
+      dash = {
+        enabled = false, -- keep literal `---`, no full-width rule
+      },
+    },
+  },
 
   -- zk
   "zk-org/zk-nvim",
-
-  { "nathanbraun/vim-rainbow-lists", ft = "vimwiki" },
 
   -- ai chat
   {
@@ -33,7 +88,7 @@ return { {
         active_model = "sonnet",
         chat_files = {
           directory = "~/notes",
-          format = "{id}.wiki"
+          format = "{id}.md"
         }
       })
     end
