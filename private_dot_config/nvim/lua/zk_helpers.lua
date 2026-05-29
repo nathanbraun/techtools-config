@@ -123,16 +123,21 @@ end
 
 
 function helpers.yankName(options, picker_options)
+  -- Capture cursor before opening the picker: closing it drops us into normal
+  -- mode, which clamps col one short when the cursor was past the line end
+  -- (common right after a trailing space) and chops that trailing char off.
+  local saved_row, saved_col = unpack(vim.api.nvim_win_get_cursor(0))
+
   zk.pick_notes(options, picker_options, function(notes)
-    local pos = vim.api.nvim_win_get_cursor(0)[2]
-    local line = vim.api.nvim_get_current_line()
+    local line = vim.api.nvim_buf_get_lines(0, saved_row - 1, saved_row, false)[1] or ""
 
     if picker_options.multi_select == false then
       notes = { notes }
     end
     for _, note in ipairs(notes) do
-      local nline = line:sub(0, pos) .. "[" .. note.title  .. "]" .. "(" .. note.path:sub(1,-4) .. ")" .. line:sub(pos + 1)
-      vim.api.nvim_set_current_line(nline)
+      local nline = line:sub(1, saved_col) ..
+          "[" .. note.title .. "]" .. "(" .. note.path:sub(1, -4) .. ")" .. line:sub(saved_col + 1)
+      vim.api.nvim_buf_set_lines(0, saved_row - 1, saved_row, false, { nline })
     end
   end)
 end
